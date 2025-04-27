@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HIMANSHU - Life & Simplicity</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <div class="logo-text">HIMANSHU</div>
+        </div>
+        <div class="nav-links">
+            <a href="#books" class="nav-link">Books</a>
+            <a href="#podcasts" class="nav-link">Podcasts</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-banner">
+        <div class="hero-content">
+            <h1 class="quote">"Simplicity is not about adding more, but removing what doesn’t matter."</h1>
+            <p class="author">— Himanshu Sharma</p>
+            <button class="hero-btn">Explore More</button>
+        </div>
+    </div>
+    <!-- Featured Book Section -->
+    <div class="book-of-the-month" id="bookMonth">
+        <div class="book-image">
+            <img src="b1.png" alt="Book of the Month">
+        </div>
+        <div class="book-description">
+            <h2>Book of the Month: Simple Solutions for Complicated Problems</h2>
+            <p>This book tackles the overwhelming complexity we face in our daily lives and presents simple, actionable
+                solutions to make life easier. Whether it's managing time, relationships, or work challenges, the author
+                provides a straightforward approach to navigating obstacles and achieving clarity in a chaotic world.
+            </p>
+            <a href="https://amzn.in/d/a5BM5WT" class="buy-now-btn">Buy Now</a>
+        </div>
+    </div>
+
+
+
+    <!-- Popular Books Section -->
+    <section class="popular-books" id="books">
+        <div class="container">
+            <h2 class="section-title">Popular Reads</h2>
+            <p class="section-subtitle">Discover bestselling books that have transformed thousands of lives through
+                practical wisdom and actionable insights.</p>
+
+            <div class="featured-books">
+                <div class="book">
+                    <div class="ribbon">Best Seller</div>
+                    <img src="b1.png" alt="Simple Solutions">
+                    <h3>Simple Solutions for Complicated Problems</h3>
+                    <p>This book helps individuals overcome limitations, optimize their time and energy, and achieve
+                        personal growth through practices like yoga, meditation, and healthy routines, while emphasizing
+                        the importance of supportive relationships.</p>
+                    <div class="ratings"><span>⭐⭐⭐⭐⭐</span></div>
+                    <a href="https://amzn.in/d/a5BM5WT">Buy Now</a>
+                </div>
+
+                <div class="book">
+                    <img src="b2.png" alt="7-Step Guide">
+                    <h3>The 7-Step Guide to Simplifying Your Life</h3>
+                    <p>"The 7-Step Guide to Simplifying Your Life" offers practical wisdom and actionable steps to
+                        navigate life's challenges, helping you rediscover fulfillment amidst modern distractions. It
+                        provides a path through the trials that stretch and disrupt our comfort zones.</p>
+                    <div class="ratings"><span>⭐⭐⭐⭐</span></div>
+                    <a href="sign-login.html">Read Now!</a>
+                </div>
+
+                <div class="book">
+                    <img src="upcoming.jpg" alt="Everyday Wisdom">
+                    <h3>Why We Fail and How To Fix it</h3>
+                    <p>From decluttering your mind to organizing your daily routine — this guide helps you build a
+                        minimalist life</p>
+                    <div class="ratings"><span>⭐⭐⭐⭐</span></div>
+                    <a class="disabled-btn">Coming Soon!</a>
+                </div>
+            </div>
+    </section>
+
+    <!-- Podcasts Section -->
+    <section class="podcasts" id="podcasts">
+        <div class="container">
+            <h2 class="section-title">Inspiring Podcasts</h2>
+            <p class="section-subtitle">Listen to thought-provoking conversations that will help you navigate life's
+                challenges with clarity and purpose.</p>
+
+            <div class="podcast-list">
+
+                <div class="podcast-card">
+                    <div class="podcast-image">
+                        <iframe width="100%" height="100%" object-fit: cover
+                            src="https://www.youtube.com/embed/2VC_dicRQNU?si=l7duNhgLkJ1Yswr_Q"
+                            title="Kaal Bhairav ke ansune Rahasya" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="podcast-content">
+                        <h3 class="podcast-title">Kaal Bhairav ke ansune Rahasya</h3>
+                        <div class="podcast-meta">
+                            <span><i class="far fa-clock"></i> 50 minutes</span>
+                            <span><i class="far fa-calendar"></i> March 9, 2025</span>
+                        </div>
+                        <p class="podcast-description">In this episode, Himanshu talks on Kaal Bhairav, Tantra, Bali
+                            Pratha and his Paranormal Encounters & many more.</p>
+                        <div class="podcast-platforms">
+                            <a href="https://www.youtube.com/embed/2VC_dicRQNU?si=l7duNhgLkJ1Yswr_"
+                                class="platform-link" target="_blank">
+                                <i class="fab fa-youtube"></i> YouTube
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- <div class="podcast-card">
+                    <div class="podcast-image">
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/GJGtCtJImr8"
+                            title="Podcast Episode 2" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="podcast-content">
+                        <h3 class="podcast-title">Decluttering Your Digital Life</h3>
+                        <div class="podcast-meta">
+                            <span><i class="far fa-clock"></i> 38 minutes</span>
+                            <span><i class="far fa-calendar"></i> April 1, 2025</span>
+                        </div>
+                        <p class="podcast-description">Digital overwhelm is real. In this episode, Himanshu shares
+                            effective strategies to organize your digital space, reduce screen time, and create
+                            healthier technology habits that will boost your productivity and mental wellbeing.</p>
+                        <div class="podcast-platforms">
+                            <a href="https://www.youtube.com/watch?v=ghi789" class="platform-link" target="_blank">
+                                <i class="fab fa-youtube"></i> YouTube
+                            </a>
+                        </div>
+
+                    </div>
+                </div> -->
+
+                <!-- <div class="podcast-card">
+                    <div class="podcast-image">
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/ODAW2Mr7JcA"
+                            title="Podcast Episode 3" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="podcast-content">
+                        <h3 class="podcast-title">Finding Purpose in Simplicity</h3>
+                        <div class="podcast-meta">
+                            <span><i class="far fa-clock"></i> 52 minutes</span>
+                            <span><i class="far fa-calendar"></i> March 15, 2025</span>
+                        </div>
+                        <p class="podcast-description">What if the key to finding your purpose isn't adding more to your
+                            life, but removing what doesn't matter? Himanshu explores how simplifying your life can help
+                            you discover what truly matters and align your daily actions with your deeper values.</p>
+                        <div class="podcast-platforms">
+                            <a href="https://www.youtube.com/watch?v=ghi789" class="platform-link" target="_blank">
+                                <i class="fab fa-youtube"></i> YouTube
+                            </a>
+                        </div>
+
+                    </div> -->
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- About Author Section -->
+    <section class="about-author" id="about">
+        <div class="container">
+            <h2 class="section-title">About The Author</h2>
+            <p class="section-subtitle">Get to know the mind</p>
+
+            <div class="about-container">
+                <div class="author-photo">
+                    <img src="author.jpg" alt="Himanshu Sharma">
+                </div>
+                <div class="author-info">
+                    <h2 class="author-name">Himanshu Sharma</h2>
+                    <p class="hero-subtitle fade-in">Author & Teacher</p>
+                    <p class="author-bio">
+                        Himanshu Sharma is an author, speaker, and teacher who helps individuals find clarity and
+                        purpose. After experiencing burnout, he simplified life, reduced stress, and embraced
+                        mindfulness. He now works with individuals and organizations, including NGOs, to guide people
+                        through challenges and achieve balance.
+                    </p>
+                    <p class="author-bio">
+                        In addition to his speaking engagements Himanshu shares insights on living authentically and
+                        with intention in an increasingly complicated world through his writing. His work aims to help
+                        people navigate life's complexities with a sense of purpose and peace.</p>
+
+
+                    <div class="author-social">
+                        <a href="https://www.facebook.com/share/r/1EVpdsDm2k/" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://youtube.com/@simplesolutions4all?si=pmGIQRSWbdruoCtO" class="social-link"><i
+                                class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Have questions or want to collaborate? Reach out to us today.</p>
+
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3 class="contact-title">Contact Information</h3>
+                    <p class="contact-text">Feel free to reach out with any questions about books, speaking engagements.
+                        We're here to help you on your journey to a simpler, more meaningful life.</p>
+
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="method-content">
+                                <h4>Email Us</h4>
+                                <p>simplesolutions12886@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="method-content">
+                                <h4>Whatsapp Us</h4>
+                                <p>+91 7668771327</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="method-content">
+                                <h4>Support Us</h4>
+                                <p><a href="#" class="support-toggle">Click here to support our work</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Support Us Panel (initially hidden) -->
+                    <div class="support-panel" style="display: none;">
+                        <h4>Support Our Work</h4>
+                        <p>Your support helps us continue creating meaningful content.</p>
+
+                        <div class="payment-options">
+
+
+                            <div class="payment-method">
+                                <h5>UPI Payment</h5>
+                                <div class="qr-code">
+                                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=hello@himanshu&pn=Mindful%20Living&am=&cu=INR"
+                                        alt="Scan QR Code">
+                                    <p>Scan to pay via UPI</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-container">
+                    <h3 class="contact-title">Send a Message</h3>
+
+                    <form class="contact-form" method="post" name="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="name">Your Name</label>
+                                <input type="text" id="name" name="Name" class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="email">Email Address</label>
+                                <input type="email" id="email" name="Email" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="subject">Subject</label>
+                            <input type="text" name="Subject" class="form-control" placeholder="">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="message">Your Message</label>
+                            <textarea id="message" name="Message" class="form-control" required></textarea>
+                        </div>
+
+                        <button type="submit" value="Submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-thankyou">Thank you for visiting! Stay tuned for more updates ✨</p>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/share/r/1EVpdsDm2k/" class="footer-social-icon"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://youtube.com/@simplesolutions4all?si=pmGIQRSWbdruoCtO" class="footer-social-icon"><i
+                            class="fab fa-youtube"></i></a>
+                </div>
+                <p class="footer-text">&copy; 2025 Himanshu Sharma. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+
+            // Animate hamburger menu
+            const spans = menuToggle.querySelectorAll('span');
+            spans.forEach(span => span.classList.toggle('active'));
+        });
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            // Back to Top Button
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+
+        // Back to Top Functionality
+        document.querySelector('.back-to-top').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Close mobile menu if open
+                    navLinks.classList.remove('active');
+
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+
+        // Testimonial Slider
+        document.addEventListener('DOMContentLoaded', function () {
+            const supportToggle = document.querySelector('.support-toggle');
+            const supportPanel = document.querySelector('.support-panel');
+
+            supportToggle.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                if (supportPanel.style.display === 'none' || !supportPanel.style.display) {
+                    supportPanel.style.display = 'block';
+                } else {
+                    supportPanel.style.display = 'none';
+                }
+            });
+
+            // For the SWIPE button (this would be replaced with actual payment integration)
+            const swipeBtn = document.querySelector('.swipe-btn');
+            swipeBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                alert('This would integrate with a payment processor like Razorpay, Stripe, etc.');
+            });
+        });
+        // Form Submission
+
+        // Podcast Play Buttons
+        document.querySelectorAll('.podcast-play').forEach(button => {
+            button.addEventListener('click', function () {
+                const icon = this.querySelector('i');
+
+                // Toggle between play and pause
+                if (icon.classList.contains('fa-play')) {
+                    icon.classList.remove('fa-play');
+                    icon.classList.add('fa-pause');
+                } else {
+                    icon.classList.remove('fa-pause');
+                    icon.classList.add('fa-play');
+                }
+
+                // In a real implementation, this would trigger audio playback
+                console.log('Playing/pausing podcast');
+            });
+        });
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        observer.observe(document.getElementById('bookMonth'));
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+
+        const form = document.forms['contact-form'];
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const name = form['Name'].value.trim();
+            const email = form['Email'].value.trim();
+            const subject = form['Subject'].value.trim();
+            const message = form['Message'].value.trim();
+
+
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@(gmail\.com|yahoo\.com|.*\.stu)$/i;
+            const namePattern = /^[A-Za-z][A-Za-z\s]*$/;
+
+            if (!namePattern.test(name)) {
+                return Swal.fire({
+                    icon: 'warning',
+                    title: 'Invalid Name',
+                    text: 'Name must start with a letter and not contain special characters at the beginning.',
+                });
+            }
+
+            if (!emailPattern.test(email)) {
+                return Swal.fire({
+                    icon: 'warning',
+                    title: 'Invalid Email',
+                    text: 'Email must be from Gmail, Yahoo, or end with .stu.',
+                });
+            }
+
+            if (subject.length === 0) {
+                return Swal.fire({
+                    icon: 'warning',
+                    title: 'Subject Missing',
+                    text: 'Please enter a subject.',
+                });
+            }
+
+            if (message.length === 0) {
+                return Swal.fire({
+                    icon: 'warning',
+                    title: 'Message Missing',
+                    text: 'Please enter a message.',
+                });
+            }
+
+            const formData = { Name: name, Email: email, Subject: subject, Message: message };
+
+            try {
+                const response = await fetch('http://localhost:5000/submit-form', {  // Change URL when deployed
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Message Sent!',
+                        text: 'Thank you for contacting us.',
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        window.location.reload();
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong. Please try again!',
+                        confirmButtonColor: '#d33',
+                        confirmButtonText: 'Retry'
+                    });
+                }
+            } catch (error) {
+                console.error('Error!', error.message);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Server Error!',
+                    text: 'Unable to send message right now. Try again later.',
+                    confirmButtonColor: '#d33',
+                    confirmButtonText: 'OK'
+                });
+            }
+        });
+
+
+
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+
+</html>

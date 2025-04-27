@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Book</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+  
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Merriweather', serif;
+      background: linear-gradient(to bottom right, #f7f0e8, #f2e6d9);
+      color: #4a3f35;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    /* Book title */
+    h1 {
+      font-size: 3em;
+      margin-bottom: 30px;
+      font-weight: 700;
+      color: #5a4634;
+      letter-spacing: 1px;
+      text-align: center;
+    }
+
+    /* Book wrapper */
+    .book-wrapper {
+      background: #fcfaf8;
+      border-radius: 12px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      width: 90%;
+      max-width: 850px;
+      padding: 30px;
+      position: relative;
+    }
+
+    .book-wrapper::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 15px;
+      width: 8px;
+      background: linear-gradient(to bottom, #d9c7b0, #c2b39b);
+      border-radius: 4px;
+      box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
+    }
+
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+      border-radius: 8px;
+      background-color: #ffffff;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+      transition: height 0.3s ease;
+    }
+
+    /* Responsive book title and iframe */
+    @media (max-width: 1024px) {
+      h1 {
+        font-size: 2.5em;
+      }
+
+      iframe {
+        height: 550px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.2em;
+      }
+
+      .book-wrapper {
+        padding: 20px;
+      }
+
+      iframe {
+        height: 1550px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.8em;
+      }
+
+      .book-wrapper {
+        padding: 15px;
+      }
+
+      iframe {
+        height: 750px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <div class="logo">
+      <div class="logo-text">HIMANSHU</div>
+    </div>
+    <div class="nav-links">
+      <a href="index.html#books" class="nav-link">Books</a>
+      <a href="index.html#podcasts" class="nav-link">Podcasts</a>
+      <a href="index.html#about" class="nav-link">About</a>
+      <a href="index.html#contact" class="nav-link">Contact</a>
+    </div>
+    <div class="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <h1>Your Book</h1>
+
+  <div class="book-wrapper">
+    <iframe src="https://drive.google.com/file/d/1tPPT8jeM0Bu2n0tb4tatO4RcqdAHrzK4/preview" allow="autoplay">
+    </iframe>
+  </div>
+
+</body>
+
+</html>
