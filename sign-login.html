@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Book Haven | Signup & Login</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
@@ -26,7 +27,7 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            
             background: linear-gradient(135deg, #f9f7f1, #f1f6f9);
             display: flex;
             justify-content: center;
@@ -176,11 +177,11 @@
             .container {
                 padding: 30px 20px;
             }
-            
+
             h2 {
                 font-size: 28px;
             }
-            
+
             input {
                 padding: 12px 15px 12px 40px;
             }
@@ -200,7 +201,7 @@
                 </div>
                 <div class="error-message" id="name-error"></div>
             </div>
-            
+
             <div class="form-group">
                 <label for="email">Email Address</label>
                 <div class="input-wrapper">
@@ -209,7 +210,7 @@
                 </div>
                 <div class="error-message" id="email-error"></div>
             </div>
-            
+
             <div class="form-group">
                 <label for="password">Password</label>
                 <div class="input-wrapper">
@@ -218,13 +219,13 @@
                 </div>
                 <div class="error-message" id="password-error"></div>
             </div>
-            
+
             <button type="submit" id="submit-btn">
                 <span id="btn-text">Sign Up</span>
                 <i class="fas fa-spinner fa-spin" id="btn-spinner" style="display: none;"></i>
             </button>
         </form>
-        
+
         <div class="switch-form">
             Already have an account? <a href="#" id="switch-to-login">Sign In</a>
         </div>
@@ -240,12 +241,12 @@
         const btnText = document.getElementById('btn-text');
         const btnSpinner = document.getElementById('btn-spinner');
         const nameGroup = document.getElementById('name-group');
-        
+
         // Error elements
         const nameError = document.getElementById('name-error');
         const emailError = document.getElementById('email-error');
         const passwordError = document.getElementById('password-error');
-        
+
         let isSignup = true;
 
         // Toggle between signup and login forms
@@ -255,17 +256,21 @@
 
             // Clear all errors
             clearErrors();
-            
+
+            const nameInput = document.getElementById('name');
+
             if (isSignup) {
                 // Switch to Signup form
                 formTitle.textContent = 'Create Account';
                 nameGroup.style.display = 'block';
+                nameInput.setAttribute('required', ''); // Add required attribute
                 btnText.textContent = 'Sign Up';
-                switchLink.innerHTML = `Already have an account? <a href="#">Sign In</a>`;
+                switchLink.innerHTML = `Already have an account ? <a href="#">Sign In</a>`;
             } else {
                 // Switch to Login form
                 formTitle.textContent = 'Welcome Back';
                 nameGroup.style.display = 'none';
+                nameInput.removeAttribute('required'); // Remove required attribute
                 btnText.textContent = 'Sign In';
                 switchLink.innerHTML = `Don't have an account? <a href="#">Sign Up</a>`;
             }
@@ -309,23 +314,23 @@
         // Form submission handler
         authForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
+
             // Clear previous errors
             clearErrors();
-            
+
             // Get form values
             const name = isSignup ? document.getElementById('name').value.trim() : null;
             const email = document.getElementById('email').value.trim();
             const password = document.getElementById('password').value;
-            
+
             // Validate inputs
             let isValid = true;
-            
+
             if (isSignup && !name) {
                 showError(nameError, 'Please enter your full name');
                 isValid = false;
             }
-            
+
             if (!email) {
                 showError(emailError, 'Please enter your email');
                 isValid = false;
@@ -333,7 +338,7 @@
                 showError(emailError, 'Please enter a valid email address');
                 isValid = false;
             }
-            
+
             if (!password) {
                 showError(passwordError, 'Please enter your password');
                 isValid = false;
@@ -341,14 +346,14 @@
                 showError(passwordError, 'Password must be at least 6 characters');
                 isValid = false;
             }
-            
+
             if (!isValid) return;
-            
+
             // Show loading state
             btnText.style.display = 'none';
             btnSpinner.style.display = 'inline-block';
             submitBtn.disabled = true;
-            
+
             try {
                 const endpoint = isSignup ? 'adduser' : 'validateuser';
                 const response = await fetch(`http://localhost:5000/${endpoint}`, {
@@ -362,21 +367,21 @@
                         password
                     })
                 });
-                
+
                 const data = await response.json();
-                
+
                 if (response.ok) {
                     // Success - show SweetAlert and redirect
-                    showAlert('success', 'Success!', isSignup 
-                        ? 'Your account has been created successfully!' 
+                    showAlert('success', 'Success!', isSignup
+                        ? 'Your account has been created successfully!'
                         : 'You have logged in successfully!');
-                    
+
                     // Redirect after alert is closed
                     Swal.fire({
                         icon: 'success',
                         title: 'Success!',
-                        text: isSignup 
-                            ? 'Your account has been created successfully!' 
+                        text: isSignup
+                            ? 'Your account has been created successfully!'
                             : 'You have logged in successfully!',
                         confirmButtonColor: '#6c5ce7',
                         confirmButtonText: 'Continue'
@@ -405,4 +410,5 @@
         });
     </script>
 </body>
+
 </html>

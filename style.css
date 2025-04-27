@@ -127,6 +127,11 @@ h1, h2, h3, h4, h5 {
     letter-spacing: 1px;
 }
 
+.logo-text a{
+    text-decoration: none;
+    color: #e56b3d;
+}
+
 .nav-links {
     display: flex;
     gap: 2rem;
