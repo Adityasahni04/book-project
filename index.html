@@ -20,6 +20,8 @@
             <a href="#podcasts" class="nav-link">Podcasts</a>
             <a href="#about" class="nav-link">About</a>
             <a href="#contact" class="nav-link">Contact</a>
+            <!-- <button onclick="translateToHindi()">हिंदी</button> -->
+
         </div>
         <div class="menu-toggle">
             <span></span>
@@ -67,9 +69,13 @@
                     <div class="ribbon">Best Seller</div>
                     <img src="bg7.png" alt="7-Step Guide">
                     <h3>The 7-Step Guide to Simplifying Your Life</h3>
-                    <p>"The 7-Step Guide to Simplifying Your Life" provides practical steps to navigate life's challenges, helping you rediscover fulfillment and maintain balance amidst modern distractions and disruptions.</p>
+                    <p>"The 7-Step Guide to Simplifying Your Life" provides practical steps to navigate life's
+                        challenges, helping you rediscover fulfillment and maintain balance amidst modern distractions
+                        and disruptions.</p>
                     <div class="ratings"><span>⭐⭐⭐⭐</span></div>
-                    <a href="https://www.amazon.com/7-Step-Guide-Simplifying-Your-Life-ebook/dp/B0DC595VCC/ref=tmm_kin_swatch_0">Buy Now</a>
+                    <a
+                        href="https://www.amazon.com/7-Step-Guide-Simplifying-Your-Life-ebook/dp/B0DC595VCC/ref=tmm_kin_swatch_0">Buy
+                        Now</a>
                 </div>
 
                 <div class="book">
@@ -79,18 +85,22 @@
                         promoting practices like yoga, meditation, and healthy routines, while highlighting supportive
                         relationships.</p>
                     <div class="ratings"><span>⭐⭐⭐⭐⭐</span></div>
-                    <a href="sign-login.html">Read Now!</a>   
+                    <a href="sign-login.html">Read Now!</a>
                 </div>
 
-               
                 <div class="book">
-                    <img src="bg4.png" alt="Everyday Wisdom">
+                    <div class="image-container" style="position: relative; display: inline-block;">
+                        <button class="left-btn" onclick="prevImage()"></button>
+                        <img id="bookImage" src="bg5.png" alt="Everyday Wisdom" style="width: 200px;">
+                        <button class="right-btn" onclick="nextImage()"></button>
+                    </div>
+                    
                     <h3>Why We Fail and How To Fix it - Mastering the Mind</h3>
-                    <p>From decluttering your mind to organizing your daily routine — this guide helps you build a
-                        minimalist life</p>
+                    <p>From decluttering your mind to organizing your daily routine — this guide helps you build a minimalist life</p>
                     <div class="ratings"><span>⭐⭐⭐⭐</span></div>
                     <a class="disabled-btn">Coming Soon!</a>
                 </div>
+
             </div>
     </section>
 
@@ -278,8 +288,7 @@
                             <div class="payment-method">
                                 <h5>UPI Payment</h5>
                                 <div class="qr-code">
-                                    <img src="upadtedqr.jpg"
-                                        alt="Scan QR Code">
+                                    <img src="upadtedqr.jpg" alt="Scan QR Code">
                                     <p>Scan to pay via UPI</p>
                                 </div>
                             </div>
@@ -548,13 +557,30 @@
             }
         });
 
-
-
-
         // Observe all sections
         document.querySelectorAll('section').forEach(section => {
             observer.observe(section);
         });
+
+        const images = ["bg5.png", "bg4.png"]; // Add your image filenames here
+        let currentIndex = 0;
+
+        function showImage(index) {
+            const img = document.getElementById("bookImage");
+            img.src = images[index];
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage(currentIndex);
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        }
+
+
     </script>
 </body>
 

@@ -37,7 +37,11 @@ body {
     overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
     font-family: 'Philosopher', serif;
     font-weight: 700;
     line-height: 1.3;
@@ -127,7 +131,7 @@ h1, h2, h3, h4, h5 {
     letter-spacing: 1px;
 }
 
-.logo-text a{
+.logo-text a {
     text-decoration: none;
     color: #e56b3d;
 }
@@ -197,7 +201,8 @@ h1, h2, h3, h4, h5 {
     opacity: 0;
     transform: translateY(30px);
     animation: fadeInUp 1.5s ease-out forwards;
-    margin-top: 80px; /* Added to account for fixed navbar */
+    margin-top: 80px;
+    /* Added to account for fixed navbar */
 }
 
 .hero-banner::before {
@@ -266,19 +271,24 @@ h1, h2, h3, h4, h5 {
 
 .book-image {
     text-align: center;
-    flex: 0 0 40%; /* Fixed width for book image container */
+    flex: 0 0 40%;
+    /* Fixed width for book image container */
 }
 
 .book-image img {
-    max-width: 100%; /* Make image responsive */
+    max-width: 100%;
+    /* Make image responsive */
     height: auto;
     border-radius: 10px;
-    max-height: 450px; /* Limit height to maintain aspect ratio */
-    object-fit: contain; /* Ensure image maintains aspect ratio */
+    max-height: 450px;
+    /* Limit height to maintain aspect ratio */
+    object-fit: contain;
+    /* Ensure image maintains aspect ratio */
 }
 
 .book-description {
-    flex: 0 0 60%; /* Fixed width for description */
+    flex: 0 0 60%;
+    /* Fixed width for description */
     max-width: 550px;
     margin-left: 30px;
     text-align: left;
@@ -312,6 +322,50 @@ h1, h2, h3, h4, h5 {
     background-color: #ff5e3a;
 }
 
+.left-btn,
+.right-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #333;
+    /* Dark background for the button */
+    color: white;
+    border: none;
+    padding: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 50%;
+    /* Makes the button circular */
+    width: 40px;
+    /* Circular button size */
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Left button (Arrow pointing left) */
+.left-btn::before {
+    content: "←";
+    /* Unicode for left arrow */
+    font-size: 20px;
+}
+
+/* Right button (Arrow pointing right) */
+.right-btn::before {
+    content: "→";
+    /* Unicode for right arrow */
+    font-size: 20px;
+}
+
+.left-btn {
+    left: 10px;
+}
+
+.right-btn {
+    right: 10px;
+}
+
 /* Popular Books Section */
 .popular-books {
     padding: 10px 0;
@@ -339,7 +393,8 @@ h1, h2, h3, h4, h5 {
     transition: transform 0.3s, box-shadow 0.3s;
     display: flex;
     flex-direction: column;
-    max-width: 400px; /* Limit maximum width */
+    max-width: 400px;
+    /* Limit maximum width */
 }
 
 .book:hover {
@@ -349,8 +404,10 @@ h1, h2, h3, h4, h5 {
 
 .book img {
     width: 100%;
-    height: 400px; /* Fixed height for all book images */
-    object-fit: contain; /* Maintain aspect ratio */
+    height: 400px;
+    /* Fixed height for all book images */
+    object-fit: contain;
+    /* Maintain aspect ratio */
     border-radius: 5px;
     margin-bottom: 15px;
 }
@@ -365,7 +422,8 @@ h1, h2, h3, h4, h5 {
     margin: 10px 0;
     font-size: 1em;
     color: #555;
-    flex-grow: 1; /* Allow description to take available space */
+    flex-grow: 1;
+    /* Allow description to take available space */
 }
 
 .book a {
@@ -444,7 +502,8 @@ h1, h2, h3, h4, h5 {
     flex: 0 0 350px;
     position: relative;
     overflow: hidden;
-    height: 250px; /* Fixed height */
+    height: 250px;
+    /* Fixed height */
 }
 
 .podcast-image iframe {
@@ -516,14 +575,14 @@ h1, h2, h3, h4, h5 {
 /* About Author Section */
 
 
-.container-1
-{
+.container-1 {
     width: 100%;
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
     padding: 0 80px;
 }
+
 .about-author {
     padding: 20px 0;
     background: var(--bg-white);
@@ -538,16 +597,20 @@ h1, h2, h3, h4, h5 {
 }
 
 .author-photo {
-    flex: 0 0 40%; /* Fixed width for author photo container */
+    flex: 0 0 40%;
+    /* Fixed width for author photo container */
     position: relative;
-    max-width: 400px; /* Limit maximum width */
+    max-width: 400px;
+    /* Limit maximum width */
 }
 
 .author-photo img {
     width: 100%;
     height: auto;
-    max-height: 430px; /* Limit height */
-    object-fit: cover; /* Cover the container */
+    max-height: 430px;
+    /* Limit height */
+    object-fit: cover;
+    /* Cover the container */
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lg);
 }
@@ -577,7 +640,8 @@ h1, h2, h3, h4, h5 {
 }
 
 .author-info {
-    flex: 0 0 60%; /* Fixed width for author info */
+    flex: 0 0 60%;
+    /* Fixed width for author info */
 }
 
 .author-name {
@@ -796,8 +860,10 @@ textarea.form-control {
     font-size: 0.8rem;
     color: var(--text-medium);
 }
+
 .custom-btn {
-    background-color: #007bff; /* Blue color */
+    background-color: #007bff;
+    /* Blue color */
     border: none;
     border-radius: 8px;
     padding: 10px 20px;
@@ -805,19 +871,21 @@ textarea.form-control {
     font-weight: bold;
     color: white;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  }
-  
-  .custom-btn:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-    transform: scale(1.05); /* Slight zoom on hover */
-  }
-  
-  .custom-btn:active {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.custom-btn:hover {
+    background-color: #0056b3;
+    /* Darker blue on hover */
+    transform: scale(1.05);
+    /* Slight zoom on hover */
+}
+
+.custom-btn:active {
     background-color: #004080;
     transform: scale(0.98);
-  }
-  
+}
+
 
 /* Footer */
 .footer {
@@ -898,6 +966,7 @@ textarea.form-control {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -909,10 +978,12 @@ textarea.form-control {
         transform: scale(0.6);
         opacity: 0;
     }
+
     50% {
         transform: scale(1.3);
         opacity: 1;
     }
+
     100% {
         transform: scale(1);
     }
@@ -957,7 +1028,7 @@ textarea.form-control {
     .about-container {
         gap: 30px;
     }
-    
+
     .contact-container {
         gap: 30px;
     }
@@ -967,7 +1038,7 @@ textarea.form-control {
     .navbar {
         padding: 15px 20px;
     }
-    
+
     .nav-links {
         display: none;
         position: absolute;
@@ -980,31 +1051,31 @@ textarea.form-control {
         box-shadow: var(--shadow-md);
         z-index: 1000;
     }
-    
+
     .nav-links.active {
         display: flex;
     }
-    
+
     .menu-toggle {
         display: flex;
     }
-    
+
     .menu-toggle span.active:nth-child(1) {
         transform: translateY(9px) rotate(45deg);
     }
-    
+
     .menu-toggle span.active:nth-child(2) {
         opacity: 0;
     }
-    
+
     .menu-toggle span.active:nth-child(3) {
         transform: translateY(-9px) rotate(-45deg);
     }
-    
+
     .podcast-card {
         flex-direction: column;
     }
-    
+
     .podcast-image {
         height: 250px;
         flex: none;
@@ -1017,49 +1088,49 @@ textarea.form-control {
         text-align: center;
         padding: 30px 20px;
     }
-    
+
     .book-image {
         flex: none;
         margin-bottom: 30px;
     }
-    
+
     .book-description {
         margin-left: 0;
         text-align: center;
         flex: none;
     }
-    
+
     .about-container {
         flex-direction: column;
         text-align: center;
     }
-    
+
     .author-photo {
         flex: none;
         margin: 0 auto 40px;
     }
-    
+
     .author-info {
         flex: none;
     }
-    
+
     .author-social {
         justify-content: center;
     }
-    
+
     .contact-container {
         flex-direction: column;
     }
-    
+
     .form-row {
         flex-direction: column;
         gap: 0;
     }
-    
+
     .featured-books {
         justify-content: center;
     }
-    
+
     .book {
         flex: 0 0 100%;
         max-width: 320px;
@@ -1070,35 +1141,54 @@ textarea.form-control {
     .quote {
         font-size: 1.8em;
     }
-    
+
     .author {
         font-size: 1em;
     }
-    
+
     .hero-btn {
         padding: 10px 20px;
         font-size: 1em;
     }
-    
+
     .section-title {
         font-size: 2rem;
     }
-    
+
     .book-description h2 {
         font-size: 1.8rem;
     }
-    
+
     .book-description p {
         font-size: 1rem;
     }
-    
+
     .contact-method {
         flex-direction: column;
         text-align: center;
         gap: 10px;
     }
-    
+
     .method-icon {
         margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+        /* Stack contact info and form */
+        gap: 30px;
+    }
+
+    .payment-options {
+        flex-direction: column;
+    }
+
+    .qr-code img {
+        width: 180px;
+        margin-left: auto;
+        margin-right: auto;
+        /* Smaller on mobile */
     }
 }
