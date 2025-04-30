@@ -95,9 +95,10 @@
                         <img id="bookImage" src="bg5.png" alt="Everyday Wisdom" style="width: 200px;">
                         <button class="right-btn" onclick="nextImage()"></button>
                     </div>
-                    
+
                     <h3>Why We Fail and How To Fix it - Mastering the Mind</h3>
-                    <p>From decluttering your mind to organizing your daily routine — this guide helps you build a minimalist life</p>
+                    <p>From decluttering your mind to organizing your daily routine — this guide helps you build a
+                        minimalist life</p>
                     <div class="ratings"><span>⭐⭐⭐⭐</span></div>
                     <a class="disabled-btn">Coming Soon!</a>
                 </div>
@@ -201,6 +202,91 @@
     <!-- About Author Section -->
     <section class="about-author" id="about">
         <div class="container-1">
+            <h2 class="section-title">About</h2>
+            <p class="section-subtitle">Get to know us better</p>
+
+            <!-- Tab Toggle -->
+            <div class="tab-container">
+                <div class="tab-toggle">
+                    <button class="tab-btn active" data-tab="author">The Author</button>
+                    <button class="tab-btn" data-tab="us">About Us</button>
+                    <div class="tab-indicator"></div>
+                </div>
+            </div>
+
+            <!-- Author Tab Content -->
+            <div class="tab-content active" id="author-tab">
+                <div class="about-container">
+                    <div class="author-photo">
+                        <img src="author.jpg" alt="Himanshu Sharma">
+                    </div>
+                    <div class="author-info">
+                        <h2 class="author-name">Himanshu Sharma</h2>
+                        <p class="hero-subtitle fade-in">Author & Teacher</p>
+                        <p class="author-bio">
+                            The author is an experienced teacher and mentor with expertise in communication enhancement
+                            and personality development. He holds master's degrees in education, sociology, and yoga,
+                            and has taught in various academic and professional institutions. Additionally, he has
+                            served as a yoga coordinator and instructor for the Government of India. His diverse
+                            background and years of teaching experience have shaped his holistic approach to personal
+                            development.
+
+                        </p>
+                        <p class="author-bio">
+                            Recognizing the need for accessible guidance, the author created this book as part of an
+                            initiative to offer simple, effective solutions to complex life challenges. Through eBooks,
+                            e-learning courses, and optional counseling, he provides time-tested methods to help
+                            individuals identify obstacles, understand their root causes, and transform their lives. His
+                            goal is to empower readers to achieve lasting personal growth and live more fulfilled lives.
+                        </p>
+
+                        <div class="author-social">
+                            <a href="https://www.facebook.com/share/r/1EVpdsDm2k/" class="social-link">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://youtube.com/@simplesolutions4all?si=pmGIQRSWbdruoCtO" class="social-link">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Us Tab Content -->
+            <div class="tab-content" id="us-tab">
+                <div class="about-container">
+                    <div class="author-info">
+                        <h2 class="author-name">Our Mission</h2>
+                        <p class="hero-subtitle fade-in">Guiding You Toward Clarity</p>
+                        <p class="author-bio">
+                            An initiative committed to provide simple solutions to life's most complicated problems
+                            through ebooks books and e learning courses and counselling also if required. Helping in
+                            understanding the real obstacles their source and solutions in most simple and inexpensive
+                            ways. All the solutions are time tested and works for all.
+                        </p>
+                        <p class="author-bio">
+                            Throughout the book, you're encouraged to embrace the transformative power of simple
+                            solutions. By unlocking your true potential, you can overcome challenges, find harmony with
+                            nature, and create a prosperous and healthy life Through self-discovery and transformation,
+                            you embark on a profound journey of awakening, connecting with the divinity within yourself
+                            and experiencing the extraordinary.
+                        </p>
+
+                        <div class="author-social">
+                            <a href="https://www.facebook.com/share/r/1EVpdsDm2k/" class="social-link">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://youtube.com/@simplesolutions4all?si=pmGIQRSWbdruoCtO" class="social-link">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- <section class="about-author" id="about">
+        <div class="container-1">
             <h2 class="section-title">About The Author</h2>
             <p class="section-subtitle">Get to know the mind</p>
 
@@ -232,7 +318,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
@@ -557,6 +643,61 @@
                 });
             }
         });
+        document.addEventListener("DOMContentLoaded", () => {
+            const tabBtns = document.querySelectorAll(".tab-btn")
+            const tabContents = document.querySelectorAll(".tab-content")
+            const tabIndicator = document.querySelector(".tab-indicator")
+
+            // Function to switch tabs
+            function switchTab(tabId) {
+                // Update active button
+                tabBtns.forEach((btn) => {
+                    if (btn.dataset.tab === tabId) {
+                        btn.classList.add("active")
+                    } else {
+                        btn.classList.remove("active")
+                    }
+                })
+
+                // Update tab indicator position
+                if (tabId === "us") {
+                    tabIndicator.style.transform = "translateX(100%)"
+                } else {
+                    tabIndicator.style.transform = "translateX(0)"
+                }
+
+                // Show active content with animation
+                tabContents.forEach((content) => {
+                    if (content.id === `${tabId}-tab`) {
+                        // First set to display block so the animation works
+                        content.style.display = "block"
+
+                        // Force a reflow to ensure the animation works
+                        void content.offsetWidth
+
+                        // Then add active class for the animation
+                        content.classList.add("active")
+                    } else {
+                        content.classList.remove("active")
+
+                        // Set a timeout to hide the content after animation completes
+                        setTimeout(() => {
+                            if (!content.classList.contains("active")) {
+                                content.style.display = "none"
+                            }
+                        }, 300)
+                    }
+                })
+            }
+
+            // Add click event listeners to tab buttons
+            tabBtns.forEach((btn) => {
+                btn.addEventListener("click", function () {
+                    const tabId = this.dataset.tab
+                    switchTab(tabId)
+                })
+            })
+        })
 
         // Observe all sections
         document.querySelectorAll('section').forEach(section => {
