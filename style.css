@@ -132,6 +132,14 @@ h5 {
     color: var(--primary);
     letter-spacing: 1px;
 }
+.logo-text a{
+    font-family: 'Philosopher', serif;
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: var(--primary);
+    letter-spacing: 1px;
+    text-decoration: none;
+}
 
 
 @media (max-width: 768px) {
