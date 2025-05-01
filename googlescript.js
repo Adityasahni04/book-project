@@ -62,6 +62,50 @@ document.addEventListener("DOMContentLoaded", function() {
             navbar.classList.toggle("scrolled", window.scrollY > 50);
         }
     });
+    window.addEventListener('scroll', () => {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+
+        // Back to Top Button
+        const backToTop = document.querySelector('.back-to-top');
+        if (window.scrollY > 300) {
+            backToTop.classList.add('active');
+        } else {
+            backToTop.classList.remove('active');
+        }
+    });
+
+    // Back to Top Functionality
+    document.querySelector('.back-to-top').addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Smooth Scrolling for Navigation Links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                // Close mobile menu if open
+                navLinks.classList.remove('active');
+
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
 
     // Load Google Translate script
     const script = document.createElement("script");
