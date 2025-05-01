@@ -8,8 +8,64 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+      .skiptranslate {
+        display: none !important;
+      }
+      .navbar.scrolled .language-selector {
+        background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23333333%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+      }
+      @media (max-width: 768px) {
+        .language-toggle {
+          margin-left: auto;
+          margin-right: 20px;
+        }
+      } *
+      .language-toggle {
+    display: flex;
+    align-items: center;
+}
+@media (max-width: 768px) {
+
+    .navbar.active .nav-links {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .language-toggle {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .language-selector {
+        width: 100%;
+        padding: 8px;
+        font-size: 1rem;
+    }
+}
+
+
+.language-selector {
+    padding: 5px 10px;
+    border: 1px solid var(--primary);
+    border-radius: 4px;
+    background: var(--text-dark);
+    color:white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+
+    </style>
 </head>
 <body>
+    <!-- <div id="google_translate_element" style="display:none;"></div> -->
+    
     <nav class="navbar">
         <div class="logo">
         <!-- <div class="logo-icon"> <img src="WhatsApp_Image_2025-04-30_at_22.15.36_060e4073-removebg-preview.png" alt="" srcset=""></div>  -->
@@ -20,7 +76,13 @@
             <a href="#podcasts" class="nav-link">Podcasts</a>
             <a href="#about" class="nav-link">About</a>
             <a href="#contact" class="nav-link">Contact</a>
-
+            <div class="language-toggle">
+                <select class="language-selector" id="language-selector">
+                    <option value="en">English</option>
+                    <option value="hi">हिन्दी</option>
+                </select>
+            </div>
+            
         </div>
         <div class="menu-toggle">
             <span></span>
@@ -436,19 +498,10 @@
     </div>
 
     <!-- JavaScript -->
+     <script src="googlescript.js"></script>
      <script>
         // Mobile Menu Toggle
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
-
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-
-            // Animate hamburger menu
-            const spans = menuToggle.querySelectorAll('span');
-            spans.forEach(span => span.classList.toggle('active'));
-        });
-
+      
         // Navbar Scroll Effect
         window.addEventListener('scroll', () => {
             const navbar = document.querySelector('.navbar');
