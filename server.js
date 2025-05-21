@@ -110,17 +110,36 @@ app.post('/validateuser', async (req, res) => {
     }
 });
 
-// Track views: one per IP per day
+const isPrivateIP = (ip) => {
+    return (
+        ip.startsWith('10.') ||
+        ip.startsWith('192.168.') ||
+        /^172\.(1[6-9]|2[0-9]|3[0-1])\./.test(ip) ||
+        ip === '127.0.0.1' ||
+        ip === '::1'
+    );
+};
 app.get('/views', async (req, res) => {
     try {
         const ip = getClientIp(req);
-        const today = new Date().toISOString().split('T')[0]; // 'YYYY-MM-DD'
+        const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
 
-        const alreadyViewed = await View.findOne({ ip, date: today });
+        if (isPrivateIP(ip)) {
+            const totalViews = await View.countDocuments({});
+            const dailyViews = await View.countDocuments({ date: today });
+
+            return res.status(200).json({
+                message: 'Private IPs are not tracked.',
+                totalViews,
+                dailyViews,
+                unique: false
+            });
+        }
+
+        let alreadyViewed = await View.findOne({ ip, date: today });
 
         if (!alreadyViewed) {
-            const newView = new View({ ip, date: today });
-            await newView.save();
+            await new View({ ip, date: today }).save();
         }
 
         const totalViews = await View.countDocuments({});
@@ -129,14 +148,16 @@ app.get('/views', async (req, res) => {
         res.status(200).json({
             message: alreadyViewed ? 'Already viewed today.' : 'New view counted.',
             totalViews,
-            dailyViews
+            dailyViews,
+            unique: !alreadyViewed
         });
+
+        console.log(`[View] IP: ${ip}, Date: ${today}, Unique: ${!alreadyViewed}`);
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Error tracking views', error: error.message });
     }
 });
-
 // === Start Server ===
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
