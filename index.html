@@ -9,66 +9,68 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
-      .skiptranslate {
-        display: none !important;
-      }
-      .navbar.scrolled .language-selector {
-        background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23333333%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
-      }
-      @media (max-width: 768px) {
-        .language-toggle {
-          margin-left: auto;
-          margin-right: 20px;
+        .skiptranslate {
+            display: none !important;
         }
-      } *
-      .language-toggle {
-    display: flex;
-    align-items: center;
-}
-@media (max-width: 768px) {
 
-    .navbar.active .nav-links {
-        display: flex;
-    }
+        .navbar.scrolled .language-selector {
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23333333%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+        }
 
-    .menu-toggle {
-        display: flex;
-    }
+        @media (max-width: 768px) {
+            .language-toggle {
+                margin-left: auto;
+                margin-right: 20px;
+            }
+        }
 
-    .language-toggle {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-    }
+        * .language-toggle {
+            display: flex;
+            align-items: center;
+        }
 
-    .language-selector {
-        width: 100%;
-        padding: 8px;
-        font-size: 1rem;
-    }
-}
+        @media (max-width: 768px) {
+
+            .navbar.active .nav-links {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .language-toggle {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+
+            .language-selector {
+                width: 100%;
+                padding: 8px;
+                font-size: 1rem;
+            }
+        }
 
 
-.language-selector {
-    padding: 5px 10px;
-    border: 1px solid var(--primary);
-    border-radius: 4px;
-    background: var(--text-dark);
-    color:white;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-
-
+        .language-selector {
+            padding: 5px 10px;
+            border: 1px solid var(--primary);
+            border-radius: 4px;
+            background: var(--text-dark);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+        }
     </style>
 </head>
+
 <body>
     <!-- <div id="google_translate_element" style="display:none;"></div> -->
-    
+
     <nav class="navbar">
         <div class="logo">
-        <div class="logo-icon"> <img src="Simple_Creations_logo[1].png" alt="" srcset=""></div> 
+            <div class="logo-icon"> <img src="Simple_Creations_logo[1].png" alt="" srcset=""></div>
             <div class="logo-text">Simple Solutions</div>
         </div>
         <div class="nav-links">
@@ -82,7 +84,7 @@
                     <option value="hi">हिन्दी</option>
                 </select>
             </div>
-            
+
         </div>
         <div class="menu-toggle">
             <span></span>
@@ -498,10 +500,10 @@
     </div>
 
     <!-- JavaScript -->
-     <script src="googlescript.js"></script>
-     <script>
+    <script src="googlescript.js"></script>
+    <script>
         // Mobile Menu Toggle
-      
+
         // Navbar Scroll Effect
 
 
@@ -528,7 +530,25 @@
             });
         });
         // Form Submission
+        async function trackViews() {
+            try {
+                const response = await fetch('https://book-project-00ch.onrender.com/views');
+                if (!response.ok) throw new Error('Network response was not ok');
 
+                const data = await response.json();
+
+                console.log('Total Views:', data.totalViews);
+                console.log('Daily Views:', data.dailyViews);
+
+                const viewsInfo = document.createElement('div');
+                viewsInfo.textContent = `Total Views: ${data.totalViews} | Daily Views: ${data.dailyViews}`;
+                document.body.appendChild(viewsInfo);
+            } catch (error) {
+                console.error('Failed to track views:', error);
+            }
+        }
+
+        window.addEventListener('load', trackViews);
         // Podcast Play Buttons
         document.querySelectorAll('.podcast-play').forEach(button => {
             button.addEventListener('click', function () {
