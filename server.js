@@ -119,10 +119,21 @@ const isPrivateIP = (ip) => {
         ip === '::1'
     );
 };
+const excludedReferer = 'https://ss-dashboard-nine.vercel.app/';
+
 app.get('/views', async (req, res) => {
     try {
         const ip = getClientIp(req);
+        const referer = req.get('referer') || '';
         const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+
+        // Exclude requests from ss-dashboard
+        if (referer.startsWith(excludedReferer)) {
+            return res.status(200).json({
+                message: 'Views from this referer are not tracked.',
+                excluded: true
+            });
+        }
 
         if (isPrivateIP(ip)) {
             const totalViews = await View.countDocuments({});
@@ -152,7 +163,7 @@ app.get('/views', async (req, res) => {
             unique: !alreadyViewed
         });
 
-        console.log(`[View] IP: ${ip}, Date: ${today}, Unique: ${!alreadyViewed}`);
+        console.log(`[View] IP: ${ip}, Date: ${today}, Unique: ${!alreadyViewed}, Referer: ${referer}`);
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Error tracking views', error: error.message });
