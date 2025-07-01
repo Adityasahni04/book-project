@@ -119,19 +119,22 @@ const isPrivateIP = (ip) => {
         ip === '::1'
     );
 };
-const excludedReferer = 'https://ss-dashboard-nine.vercel.app/';
 
 app.get('/views', async (req, res) => {
     try {
         const ip = getClientIp(req);
-        const referer = req.get('referer') || '';
-        const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+        const today = new Date().toISOString().split('T')[0];
+        const shouldTrack = req.query.track !== 'false'; // default: true
 
-        // Exclude requests from ss-dashboard
-        if (referer.startsWith(excludedReferer)) {
+        if (!shouldTrack) {
+            const totalViews = await View.countDocuments({});
+            const dailyViews = await View.countDocuments({ date: today });
+
             return res.status(200).json({
-                message: 'Views from this referer are not tracked.',
-                excluded: true
+                message: 'View tracking disabled for this request.',
+                totalViews,
+                dailyViews,
+                unique: false
             });
         }
 
@@ -163,12 +166,13 @@ app.get('/views', async (req, res) => {
             unique: !alreadyViewed
         });
 
-        console.log(`[View] IP: ${ip}, Date: ${today}, Unique: ${!alreadyViewed}, Referer: ${referer}`);
+        console.log(`[View] IP: ${ip}, Date: ${today}, Unique: ${!alreadyViewed}`);
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Error tracking views', error: error.message });
     }
 });
+
 // === Start Server ===
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
