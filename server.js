@@ -69,6 +69,16 @@ app.get('/get-contacts', async (req, res) => {
     }
 });
 
+app.get('/get-users', async (req, res) => {
+    try {
+        const users = await User.find({});
+        res.json(users);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Server Error');
+    }
+});
+
 // Register user
 app.post('/adduser', async (req, res) => {
     const { name, email, password } = req.body;
