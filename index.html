@@ -135,9 +135,7 @@
                         challenges, helping you rediscover fulfillment and maintain balance amidst modern distractions
                         and disruptions.</p>
                     <div class="ratings"><span>⭐⭐⭐⭐</span></div>
-                    <a
-                        href="https://www.amazon.com/7-Step-Guide-Simplifying-Your-Life-ebook/dp/B0DC595VCC/ref=tmm_kin_swatch_0">Buy
-                        Now</a>
+                    <a href="#" onclick="handleProtectedRedirect('book1.html')">Read Now!</a>
                 </div>
 
                 <div class="book">
@@ -147,7 +145,7 @@
                         promoting practices like yoga, meditation, and healthy routines, while highlighting supportive
                         relationships.</p>
                     <div class="ratings"><span>⭐⭐⭐⭐⭐</span></div>
-                    <a href="sign-login.html">Read Now!</a>
+                    <a href="#" onclick="handleProtectedRedirect('book2.html')">Read Now!</a>
                 </div>
 
                 <div class="book">
@@ -746,6 +744,16 @@
         function nextImage() {
             currentIndex = (currentIndex + 1) % images.length;
             showImage(currentIndex);
+        }
+
+
+        function handleProtectedRedirect(targetPage) {
+            if (localStorage.getItem("isLoggedIn") === "true") {
+                window.location.href = targetPage;
+            } else {
+                localStorage.setItem("redirectAfterLogin", targetPage);
+                window.location.href = "sign-login.html";
+            }
         }
 
 

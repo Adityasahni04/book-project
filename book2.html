@@ -140,5 +140,11 @@
   </div>
 
 </body>
+<script>
+  if (localStorage.getItem("isLoggedIn") !== "true") {
+    localStorage.setItem("redirectAfterLogin", window.location.pathname);
+    window.location.href = "sign-login.html";
+  }
+</script>
 
 </html>

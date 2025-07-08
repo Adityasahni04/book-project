@@ -27,7 +27,7 @@
         }
 
         body {
-            
+
             background: linear-gradient(135deg, #f9f7f1, #f1f6f9);
             display: flex;
             justify-content: center;
@@ -371,6 +371,10 @@
                 const data = await response.json();
 
                 if (response.ok) {
+                    localStorage.setItem("isLoggedIn", "true");
+                    const redirectPage = localStorage.getItem("redirectAfterLogin") || "dashboard.html";
+                    localStorage.removeItem("redirectAfterLogin");
+
                     // Success - show SweetAlert and redirect
                     showAlert('success', 'Success!', isSignup
                         ? 'Your account has been created successfully!'
@@ -386,7 +390,7 @@
                         confirmButtonColor: '#6c5ce7',
                         confirmButtonText: 'Continue'
                     }).then(() => {
-                        window.location.href = "myfile.html";
+                         window.location.href = redirectPage;
                     });
                 } else {
                     // Show error from server
