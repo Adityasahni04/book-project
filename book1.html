@@ -114,6 +114,9 @@
 
     <nav class="navbar">
         <div class="logo">
+            <div class="logo-icon">
+                <img src="Simple_Creations_logo[1].png" alt="Logo">
+            </div>
             <div class="logo-text">
                 <a href="index.html">Simple Solutions</a>
             </div>
@@ -141,10 +144,12 @@
 
 </body>
 <script>
-    if (localStorage.getItem("isLoggedIn") !== "true") {
+    const accessToken = document.cookie.includes('accessToken');
+    if (!accessToken) {
         localStorage.setItem("redirectAfterLogin", window.location.pathname);
         window.location.href = "sign-login.html";
     }
+
 </script>
 
 </html>

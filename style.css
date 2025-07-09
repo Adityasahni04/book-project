@@ -233,7 +233,7 @@ h5 {
     position: relative;
     width: 100%;
     height: 450px;
-    background: url(bg-banner.jpg) center/cover no-repeat;
+    background: url(images/bg-banner.jpg) center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
