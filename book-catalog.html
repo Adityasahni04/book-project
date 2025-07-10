@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Read at Simple Solutions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        :root {
+            --primary: #ff7f50;
+            --primary-light: #ffd8cc;
+            --primary-dark: #e56b3d;
+            --accent: #ffd54f;
+            --accent-dark: #ffca28;
+            --text-dark: #333;
+            --text-medium: #555;
+            --text-light: #777;
+            --bg-light: #f8f5f2;
+            --bg-white: #ffffff;
+            --bg-cream: #fffbe6;
+            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 6px 12px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.12);
+            --radius-sm: 5px;
+            --radius-md: 10px;
+            --radius-lg: 20px;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #fff8ed;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-y: hidden;
+            margin-top: 10px;
+        }
+
+        body.grid-view {
+            overflow-y: auto;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 251, 230, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-sm);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            padding: 10px 5%;
+            box-shadow: var(--shadow-md);
+        }
+
+        .logo {
+            display: flex;
+            gap: 2px;
+            align-items: center;
+        }
+
+        .logo-icon {
+            width: 80px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            overflow: hidden;
+        }
+
+        .logo-icon img {
+            width: 100%;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-family: 'Philosopher', serif;
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: var(--primary);
+            letter-spacing: 1px;
+        }
+
+        .logo-text a {
+            font-family: 'Philosopher', serif;
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: var(--primary);
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            position: relative;
+            padding: 5px 0;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            left: 0;
+            bottom: 0;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background: var(--primary);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        main {
+            padding: 2rem 1.5rem;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        /* Arc View Container */
+        .arc-container {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        /* Grid View Container */
+        .grid-container {
+            width: 100%;
+            display: none;
+            padding: 1rem 0;
+        }
+
+        /* Poster/Card Styles */
+        .poster {
+            position: absolute;
+            width: 22vw;
+            max-width: 180px;
+            min-width: 140px;
+            aspect-ratio: 2/3;
+            border-radius: 16px;
+            background: #fff;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.8s ease;
+            cursor: pointer;
+        }
+
+        .poster img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Arc Layout Positioning */
+        .poster:nth-child(1) {
+            transform: translate(-28vw, 10vh) rotate(-15deg);
+            z-index: 1;
+        }
+
+        .poster:nth-child(2) {
+            transform: translate(-14vw, 0) rotate(-7deg);
+            z-index: 2;
+        }
+
+        .poster:nth-child(3) {
+            transform: translate(0, -6vh) scale(1.05);
+            z-index: 3;
+        }
+
+        .poster:nth-child(4) {
+            transform: translate(14vw, 0) rotate(7deg);
+            z-index: 2;
+        }
+
+        .poster:nth-child(5) {
+            transform: translate(28vw, 10vh) rotate(15deg);
+            z-index: 1;
+        }
+
+        /* Card Info Styles */
+        .card-info {
+            padding: 1rem;
+            text-align: center;
+            background: white;
+        }
+
+        .card-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #5d4037;
+        }
+
+        .card-info p {
+            font-size: 0.8rem;
+            margin-bottom: 0.3rem;
+            color: #8d6e63;
+        }
+
+        .price {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ffb74d;
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .details-button {
+            display: inline-block;
+            margin-top: 0.8rem;
+            padding: 0.4rem 1rem;
+            background-color: #ffcc80;
+            color: #5d4037;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .details-button:hover {
+            background-color: #ffb74d;
+            transform: translateY(-2px);
+        }
+
+        .poster .price {
+            display: none;
+        }
+
+        .grid-view .poster .price {
+            display: block;
+        }
+
+        /* Grid View Styles */
+        .grid-view .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .grid-view .arc-container {
+            display: none;
+        }
+
+        .grid-view .poster {
+            position: relative;
+            transform: none !important;
+            width: 80%;
+            max-width: 220px;
+            height: 500px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .grid-view .poster img {
+            height: 320px;
+            width: 100%;
+            object-fit: cover;
+            border-bottom: 2px dashed #ffe0b2;
+        }
+
+        .grid-view .card-info {
+            flex: 1;
+            padding: 1rem;
+            overflow: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .grid-view .card-info h3 {
+            margin-top: 0;
+        }
+
+        .grid-view .details-button {
+            margin-top: auto;
+
+        }
+
+        /* Controls */
+        .controls {
+            display: none;
+            justify-content: center;
+            margin-top: 70px;
+            margin-bottom: 1.5rem;
+        }
+
+        .grid-view .controls {
+            display: flex;
+        }
+
+        select {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: 1px solid #d7ccc8;
+            background: #fffaf0;
+            font-weight: 500;
+        }
+
+        /* Transform Button */
+        .transform-btn {
+            margin: 1rem auto;
+            padding: 0.8rem 1.8rem;
+            background: #ffcc80;
+            color: #5d4037;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .transform-btn:hover {
+            background: #ffb74d;
+            transform: translateY(-2px);
+        }
+
+        .grid-view .transform-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+
+        @media (max-width: 992px) {
+            .navbar {
+                padding: 21px 20px;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--bg-cream);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: var(--shadow-md);
+                z-index: 1000;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .menu-toggle span.active:nth-child(1) {
+                transform: translateY(9px) rotate(45deg);
+            }
+
+            .menu-toggle span.active:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-toggle span.active:nth-child(3) {
+                transform: translateY(-9px) rotate(-45deg);
+            }
+        }
+
+
+        @media (max-width: 768px) {
+            .logo {
+                gap: 6px;
+            }
+
+            .card img {
+                height: 320px;
+            }
+
+            .logo-icon {
+                width: 40px;
+                height: 40px;
+            }
+
+            .logo-text {
+                font-size: 1.5rem;
+            }
+
+            .navbar.active .nav-links {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                justify-content: center;
+                gap: 4px;
+            }
+
+            .logo-text {
+                font-size: 1.4rem;
+                text-align: center;
+            }
+
+            .logo-icon img {
+                width: 65px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .arc-container {
+                height: 60vh;
+                justify-content: center;
+                position: relative;
+            }
+
+            .poster {
+                width: 28vw;
+                min-width: 120px;
+            }
+
+            /* Show only 3 posters (hide 2) */
+            .poster.hidden-mobile,
+            .poster:nth-child(4),
+            .poster:nth-child(5) {
+                display: none;
+            }
+
+            /* Position 3 posters without overlap */
+            .poster:nth-child(1) {
+                transform: translate(-40vw, 5vh) rotate(-15deg);
+                z-index: 1;
+            }
+
+            .poster:nth-child(2) {
+                transform: translate(-5vw, -2vh) rotate(-3deg);
+                z-index: 2;
+            }
+
+            .poster:nth-child(3) {
+                transform: translate(30vw, 5vh) rotate(12deg);
+                z-index: 1;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .poster {
+                width: 30vw;
+                min-width: 100px;
+            }
+
+            /* Hide extra posters */
+            .poster.hidden-mobile,
+            .poster:nth-child(4),
+            .poster:nth-child(5) {
+                display: none;
+            }
+
+            /* Well-spaced arc positions */
+            .poster:nth-child(1) {
+                transform: translate(-30vw, 4vh) rotate(-12deg);
+                z-index: 1;
+            }
+
+            .poster:nth-child(2) {
+                transform: translate(0vw, -2vh) rotate(-1deg);
+                z-index: 2;
+            }
+
+            .poster:nth-child(3) {
+                transform: translate(30vw, 4vh) rotate(12deg);
+                z-index: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <div class="logo-icon"> <img src="Simple_Creations_logo[1].png" alt="" srcset=""></div>
+            <div class="logo-text">Simple Solutions</div>
+        </div>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="book-catalog.html" class="nav-link">Books</a>
+            <a href="index.html#podcasts" class="nav-link">Podcasts</a>
+            <a href="index.html#about" class="nav-link">About</a>
+            <a href="index.html#contact" class="nav-link">Contact</a>
+        </div>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+    <main>
+        <div class="arc-container" id="arcContainer">
+            <div class="poster">
+                <img src="catalog_images/catalog_7-step_english.png" alt="Book 1">
+                <div class="price">FREE</div>
+                <div class="card-info">
+                    <h3>Simple Solutions</h3>
+                    <p>Language: English</p>
+                    <p>Category: Novel</p>
+                    <p>Rating: 4.7</p>
+                    <a href="#" class="details-button">More Details</a>
+                </div>
+            </div>
+            <div class="poster">
+                <img src="catalog_images/catalog_mastering_mind_english.jpg" alt="Book 2">
+                <div class="price">FREE</div>
+                <div class="card-info">
+                    <h3>Mastering The Mind-English</h3>
+                    <p>Language: English</p>
+                    <p>Rating: 4.9</p>
+                    <a href="#" class="details-button">More Details</a>
+                </div>
+            </div>
+            <div class="poster">
+                <img src="catalog_images/catalog_simple_solutions.jpg" alt="Book 3">
+                <div class="price">FREE</div>
+                <div class="card-info">
+                    <h3>Simple Solutions for Complicated Problems</h3>
+                    <p>Language: English</p>
+                    <p>Rating: 4.8</p>
+                    <a href="#" class="details-button">More Details</a>
+                </div>
+            </div>
+            <div class="poster">
+                <img src="catalog_images/catalog_mastering_mind_hindi.jpg" alt="Book 4">
+                <div class="price">FREE</div>
+                <div class="card-info">
+                    <h3>Mastering the Mind-Hindi</h3>
+                    <p>Language: Hindi</p>
+                    <p>Rating: 4.5</p>
+                    <a href="#" class="details-button">More Details</a>
+                </div>
+            </div>
+            <div class="poster hidden-mobile">
+                <img src="images/book5.jpg" alt="Book 5">
+                <div class="price">FREE</div>
+                <div class="card-info">
+                    <h3>Hindi Stories</h3>
+                    <p>Language: Hindi</p>
+                    <p>Rating: 4.6</p>
+                    <a href="#" class="details-button">More Details</a>
+                </div>
+            </div>
+            <!-- <div class="poster hidden-mobile">
+                <img src="catalog_images/catalog_mastering_mind_hindi.jpg" alt="Book 6">
+                <div class="price">FREE</div>
+                <div class="card-info">
+                    <h3>Mastering the Mind- Hindi</h3>
+                    <p>Language: Hindi</p>
+                    <p>Rating: 4.6</p>
+                    <a href="#" class="details-button">More Details</a>
+                </div>
+            </div> -->
+        </div>
+
+        <div class="controls">
+            <select id="sortOption">
+                <option value="">Sort by</option>
+                <option value="name_asc">Name ↑</option>
+                <option value="name_desc">Name ↓</option>
+                <option value="lang_asc">Language ↑</option>
+                <option value="lang_desc">Language ↓</option>
+                <option value="rating_asc">Rating ↑</option>
+                <option value="rating_desc">Rating ↓</option>
+            </select>
+        </div>
+
+        <div class="grid-container" id="gridContainer">
+            <!-- Grid items will be duplicated from arc container -->
+        </div>
+    </main>
+
+    <button class="transform-btn" id="transformBtn">Explore All Books</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const arcContainer = document.getElementById('arcContainer');
+            const gridContainer = document.getElementById('gridContainer');
+            const transformBtn = document.getElementById('transformBtn');
+            let isGridView = false;
+
+            // Initialize grid container with all posters (including hidden ones)
+            function initializeGrid() {
+                gridContainer.innerHTML = '';
+                Array.from(arcContainer.children).forEach(poster => {
+                    const clone = poster.cloneNode(true);
+                    clone.classList.remove('hidden-mobile');
+                    clone.style.display = 'flex';
+                    gridContainer.appendChild(clone);
+                });
+            }
+
+            // Initialize on load
+            initializeGrid();
+
+            transformBtn.addEventListener('click', function () {
+                isGridView = !isGridView;
+                document.body.classList.toggle('grid-view', isGridView);
+                transformBtn.textContent = isGridView ? 'Back to Arc View' : 'Explore All Books';
+
+                if (isGridView) {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            });
+
+
+            // Sorting functionality
+            document.getElementById('sortOption').addEventListener('change', function () {
+                if (!isGridView) return;
+
+                const sortValue = this.value;
+                const gridItems = Array.from(gridContainer.children);
+
+                // Helper function to extract values from each item
+                const extractValue = (item, type) => {
+                    const info = item.querySelector('.card-info');
+                    if (!info) return '';
+                    if (type === 'name') return info.querySelector('h3')?.textContent.trim() || '';
+                    if (type === 'language') return info.querySelector('p:nth-of-type(1)')?.textContent.replace('Language: ', '').trim() || '';
+                    if (type === 'rating') return parseFloat(info.querySelector('p:nth-of-type(3)')?.textContent.replace('Rating: ', '').trim()) || 0;
+                    return '';
+                };
+
+                gridItems.sort((a, b) => {
+                    switch (sortValue) {
+                        case 'name_asc':
+                            return extractValue(a, 'name').localeCompare(extractValue(b, 'name'));
+                        case 'name_desc':
+                            return extractValue(b, 'name').localeCompare(extractValue(a, 'name'));
+                        case 'lang_asc':
+                            return extractValue(a, 'language').localeCompare(extractValue(b, 'language'));
+                        case 'lang_desc':
+                            return extractValue(b, 'language').localeCompare(extractValue(a, 'language'));
+                        case 'rating_asc':
+                            return extractValue(a, 'rating') - extractValue(b, 'rating');
+                        case 'rating_desc':
+                            return extractValue(b, 'rating') - extractValue(a, 'rating');
+                        default:
+                            return 0;
+                    }
+                });
+
+                gridItems.forEach(item => gridContainer.appendChild(item));
+            });
+        });
+        // Toggle menu (if used)
+        const toggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        if (toggle && navLinks) {
+            const spans = toggle.querySelectorAll('span');
+            toggle.addEventListener('click', () => {
+                toggle.classList.toggle('active');
+                navLinks.classList.toggle('active');
+                spans.forEach(span => span.classList.toggle('active'));
+            });
+        }
+    </script>
+
+</body>
+
+</html>
