@@ -589,7 +589,7 @@
                 <div class="card-info">
                     <h3>Mastering The Mind-English</h3>
                     <p>Language: English</p>
-                    <p>Rating: 4.9</p>
+                    <p>Rating: 4.5</p>
                     <a href="#" class="details-button">More Details</a>
                 </div>
             </div>
@@ -604,7 +604,7 @@
                 </div>
             </div>
             <div class="poster">
-                <img src="images/book4.jpg" alt="Book 4">
+                <img src="catalog_images/catalog_mastering_mind_hindi.jpg" alt="Book 4">
                 <div class="price">FREE</div>
                 <div class="card-info">
                     <h3>Mastering the Mind-Hindi</h3>
@@ -617,17 +617,17 @@
                 <img src="images/book5.jpg" alt="Book 5">
                 <div class="price">FREE</div>
                 <div class="card-info">
-                    <h3>Hindi Stories</h3>
-                    <p>Language: Hindi</p>
+                    <h3>New Book-English</h3>
+                    <p>Language: English</p>
                     <p>Rating: 4.6</p>
                     <a href="#" class="details-button">More Details</a>
                 </div>
             </div>
             <div class="poster grid-only">
-                <img src="catalog_images/catalog_mastering_mind_hindi.jpg" alt="Book 6">
+                <img src="images/book4.jpg" alt="Book 6">
                 <div class="price">FREE</div>
                 <div class="card-info">
-                    <h3>Mastering the Mind - Hindi</h3>
+                    <h3>New Book-Hindi </h3>
                     <p>Language: Hindi</p>
                     <p>Rating: 4.6</p>
                     <a href="#" class="details-button">More Details</a>
@@ -655,91 +655,6 @@
 
     <button class="transform-btn" id="transformBtn">Explore All Books</button>
 
-    <!-- <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const arcContainer = document.getElementById('arcContainer');
-            const gridContainer = document.getElementById('gridContainer');
-            const transformBtn = document.getElementById('transformBtn');
-            let isGridView = false;
-
-            // Initialize grid container with all posters (including hidden ones)
-            function initializeGrid() {
-                gridContainer.innerHTML = '';
-                Array.from(arcContainer.children).forEach(poster => {
-                    const clone = poster.cloneNode(true);
-                    clone.classList.remove('hidden-mobile');
-                    clone.style.display = 'flex';
-                    gridContainer.appendChild(clone);
-                });
-            }
-
-            // Initialize on load
-            initializeGrid();
-
-            transformBtn.addEventListener('click', function () {
-                isGridView = !isGridView;
-                document.body.classList.toggle('grid-view', isGridView);
-                transformBtn.textContent = isGridView ? 'Back to Arc View' : 'Explore All Books';
-
-                if (isGridView) {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                } else {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                }
-            });
-
-
-            // Sorting functionality
-            document.getElementById('sortOption').addEventListener('change', function () {
-                if (!isGridView) return;
-
-                const sortValue = this.value;
-                const gridItems = Array.from(gridContainer.children);
-
-                // Helper function to extract values from each item
-                const extractValue = (item, type) => {
-                    const info = item.querySelector('.card-info');
-                    if (!info) return '';
-                    if (type === 'name') return info.querySelector('h3')?.textContent.trim() || '';
-                    if (type === 'language') return info.querySelector('p:nth-of-type(1)')?.textContent.replace('Language: ', '').trim() || '';
-                    if (type === 'rating') return parseFloat(info.querySelector('p:nth-of-type(3)')?.textContent.replace('Rating: ', '').trim()) || 0;
-                    return '';
-                };
-
-                gridItems.sort((a, b) => {
-                    switch (sortValue) {
-                        case 'name_asc':
-                            return extractValue(a, 'name').localeCompare(extractValue(b, 'name'));
-                        case 'name_desc':
-                            return extractValue(b, 'name').localeCompare(extractValue(a, 'name'));
-                        case 'lang_asc':
-                            return extractValue(a, 'language').localeCompare(extractValue(b, 'language'));
-                        case 'lang_desc':
-                            return extractValue(b, 'language').localeCompare(extractValue(a, 'language'));
-                        case 'rating_asc':
-                            return extractValue(a, 'rating') - extractValue(b, 'rating');
-                        case 'rating_desc':
-                            return extractValue(b, 'rating') - extractValue(a, 'rating');
-                        default:
-                            return 0;
-                    }
-                });
-
-                gridItems.forEach(item => gridContainer.appendChild(item));
-            });
-        });
-        // Toggle menu (if used)
-        const toggle = document.querySelector('.menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
-        if (toggle && navLinks) {
-            const spans = toggle.querySelectorAll('span');
-            toggle.addEventListener('click', () => {
-                toggle.classList.toggle('active');
-                navLinks.classList.toggle('active');
-                spans.forEach(span => span.classList.toggle('active'));
-            });
-        }
-    </script> -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const arcContainer = document.getElementById('arcContainer');
