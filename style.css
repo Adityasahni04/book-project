@@ -312,23 +312,18 @@ h5 {
 .book-image {
     text-align: center;
     flex: 0 0 40%;
-    /* Fixed width for book image container */
 }
 
 .book-image img {
     max-width: 100%;
-    /* Make image responsive */
     height: auto;
     border-radius: 10px;
     max-height: 450px;
-    /* Limit height to maintain aspect ratio */
     object-fit: contain;
-    /* Ensure image maintains aspect ratio */
 }
 
 .book-description {
     flex: 0 0 60%;
-    /* Fixed width for description */
     max-width: 550px;
     margin-left: 30px;
     text-align: left;
@@ -368,16 +363,13 @@ h5 {
     top: 50%;
     transform: translateY(-50%);
     background-color: #333;
-    /* Dark background for the button */
     color: white;
     border: none;
     padding: 8px;
     font-size: 18px;
     cursor: pointer;
     border-radius: 50%;
-    /* Makes the button circular */
     width: 40px;
-    /* Circular button size */
     height: 40px;
     display: flex;
     justify-content: center;
@@ -394,7 +386,6 @@ h5 {
 /* Right button (Arrow pointing right) */
 .right-btn::before {
     content: "→";
-    /* Unicode for right arrow */
     font-size: 20px;
 }
 
@@ -636,10 +627,8 @@ h5 {
 
 .author-photo {
     flex: 0 0 40%;
-    /* Fixed width for author photo container */
     position: relative;
     max-width: 400px;
-    /* Limit maximum width */
 }
 
 .author-photo img {
@@ -648,7 +637,6 @@ h5 {
     max-height: 430px;
     /* Limit height */
     object-fit: cover;
-    /* Cover the container */
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lg);
 }
@@ -885,22 +873,24 @@ h5 {
 .slide-wrapper:hover {
     animation-play-state: paused;
 }
+
 .progress-bar {
-  height: 4px;
-  width: 100%;
-  background: linear-gradient(to right, #007bff 50%, transparent 50%);
-  background-size: 200% 100%;
-  animation: progressAnim 60s linear infinite;
-  margin-top: 10px;
+    height: 4px;
+    width: 100%;
+    background: linear-gradient(to right, #007bff 50%, transparent 50%);
+    background-size: 200% 100%;
+    animation: progressAnim 60s linear infinite;
+    margin-top: 10px;
 }
 
 @keyframes progressAnim {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: 0% 0;
-  }
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: 0% 0;
+    }
 }
 
 
