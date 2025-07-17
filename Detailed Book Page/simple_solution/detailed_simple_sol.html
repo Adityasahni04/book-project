@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Midnight Library - Book Description</title>
+    <title>Simple Solutions</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../../style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 
@@ -18,7 +19,7 @@
             </div>
             <div class="logo-text">Simple Solutions</div>
         </div>
-         <div class="nav-links">
+        <div class="nav-links">
             <a href="/index.html" class="nav-link">Home</a>
             <a href="/book-catalog.html" class="nav-link">Books</a>
             <a href="/index.html#podcasts" class="nav-link">Podcasts</a>
@@ -63,14 +64,15 @@
                 <div class="book-cover-section">
                     <div class="book-cover-sticky">
                         <div class="book-cover-card">
-                            <img src="../../catalog_images/catalog_simple_solutions.jpg"
-                                alt="The Midnight Library Book Cover" class="book-cover-image">
+                            <img src="../../catalog_images/catalog_simple_solutions.jpg" class="book-cover-image">
                         </div>
                         <!-- Action Buttons -->
                         <div class="action-buttons">
                             <button class="btn btn-primary btn-large">
                                 <i class="fas fa-book-open"></i>
-                                Read Now
+                                <a href="#" class="details-button" style="text-decoration: none; color: white;"
+                                    onclick="handleProtectedRedirect('/Book-load/simple-sol.html')">Read Now!
+                                </a>
                             </button>
                             <a href="https://www.amazon.in/dp/9358190450?ref=cm_sw_r_ffobk_mwn_dp_GSPZAWDZ2TZ5HXHT66MT&ref_=cm_sw_r_ffobk_mwn_dp_GSPZAWDZ2TZ5HXHT66MT&social_share=cm_sw_r_ffobk_mwn_dp_GSPZAWDZ2TZ5HXHT66MT&bestFormat=true&language=en-IN&previewDoh=1#detailBullets_feature_div"
                                 target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-large">
@@ -113,7 +115,7 @@
                 <div class="book-info-section">
                     <!-- Title and Author -->
                     <div class="book-header">
-                        <h1 class="book-title">Simple Solutions for Complicated Problems</h1>
+                        <h1 class="book-title">Simple Solutions</h1>
                         <p class="book-author">by Himanshu Sharma</p>
                         <!-- Rating Summary -->
                         <div class="rating-summary">
@@ -130,7 +132,7 @@
                     </div>
                     <!-- Summary -->
                     <div class="summary-section">
-                        <h2 class="section-title">Summary</h2>
+                        <h2 class="section-title1">Summary</h2>
                         <div class="summary-content">
                             <p>This book aims to assist individuals in seeking meaning, liberation, satisfaction, and
                                 perfection. It addresses self-imposed limitations and emphasizes the effective use of
@@ -155,13 +157,13 @@
                     </div>
                     <!-- About the Author -->
                     <div class="author-section">
-                        <h2 class="section-title">About the Author</h2>
+                        <h2 class="section-title1">About the Author</h2>
                         <div class="author-info">
                             <div class="author-avatar">
                                 <img src="/author.jpg" alt="Matt Haig">
                             </div>
                             <div class="author-details">
-                                <h3 class="author-name">Himanshu Sharma</h3>
+                                <h3 class="author-name1">Himanshu Sharma</h3>
                                 <p class="author-bio">Himanshu Sharma is an educator and mentor with master’s degrees in
                                     education, sociology, and yoga. A former yoga coordinator for the Government of
                                     India, he offers practical guidance through books and courses to help individuals
@@ -271,6 +273,65 @@
                 </div>
             </div>
         </div> -->
+            <section class="podcasts" id="podcasts">
+                <div class="container">
+                    <h2 class="section-title">A Complete Summary</h2>
+
+                    <div class="podcast-list">
+
+                        <div class="podcast-card">
+                            <div class="podcast-image">
+                                <iframe width="100%" height="100%" object-fit: cover
+                                    src="https://www.youtube.com/embed/videoseries?si=ral5AUfWKfdyMcxi&amp;list=PLqLHpApA8ZvuWwzzVQuUhFes_HRxwi4YT"
+                                    title="Complete Summary" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <div class="podcast-content">
+                                <h3 class="podcast-title">Listen To The Complete Summary </h3>
+                                <p class="podcast-description">In this playlist, Himanshu tells the complete summary of
+                                    his book, Simple Solution for Complicated Problems </p>
+                                <div class="podcast-platforms">
+                                    <a href="https://www.youtube.com/embed/videoseries?si=ral5AUfWKfdyMcxi&amp;list=PLqLHpApA8ZvuWwzzVQuUhFes_HRxwi4YT"
+                                        class="platform-link" target="_blank">
+                                        <i class="fab fa-youtube"></i> YouTube
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="podcast-card">
+                            <div class="podcast-image">
+                                <iframe width="100%" height="100%"
+                                    src="https://www.youtube.com/embed/videoseries?si=Q9BrlOmadx5tuTzo&amp;list=PLqLHpApA8Zvu3JCMgMSaDottdplO4euOZ"
+                                    title="A Detailed Experience of a Journey " frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <div class="podcast-content">
+                                <h3 class="podcast-title">A Detailed Experience of a Journey</h3>
+                                <p class="podcast-description">Dive into Key insights from the books Simple Solutions
+                                    for Complicated Problems and learn how to overcome challenges and achieve holistic
+                                    growth.
+                                </p>
+                                <div class="podcast-platforms">
+                                    <a href="https://www.youtube.com/embed/videoseries?si=Q9BrlOmadx5tuTzo&amp;list=PLqLHpApA8Zvu3JCMgMSaDottdplO4euOZ"
+                                        class="platform-link" target="_blank">
+                                        <i class="fab fa-youtube"></i> YouTube
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+        </div>
+        </section>
     </main>
 
     <!-- Footer -->

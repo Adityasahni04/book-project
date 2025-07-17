@@ -389,14 +389,14 @@ h5 {
     color: var(--text-light);
 }
 
-.section-title {
+.section-title1 {
     font-size: 2rem;
     color: var(--primary);
     margin-bottom: 20px;
     position: relative;
 }
 
-.section-title::after {
+.section-title1::after {
     content: '';
     position: absolute;
     bottom: -5px;
@@ -434,7 +434,7 @@ h5 {
     object-fit: cover;
 }
 
-.author-name {
+.author-name1 {
     font-size: 1.3rem;
     color: var(--text-dark);
     margin-bottom: 10px;
@@ -700,7 +700,7 @@ h5 {
         font-size: 2rem;
     }
 
-    .section-title {
+    .section-title1 {
         font-size: 1.5rem;
     }
 

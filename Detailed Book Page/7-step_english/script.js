@@ -149,3 +149,28 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
 });
+
+document.querySelectorAll('.podcast-play').forEach(button => {
+    button.addEventListener('click', function () {
+        const icon = this.querySelector('i');
+
+        if (icon.classList.contains('fa-play')) {
+            icon.classList.remove('fa-play');
+            icon.classList.add('fa-pause');
+        } else {
+            icon.classList.remove('fa-pause');
+            icon.classList.add('fa-play');
+        }
+
+        console.log('Playing/pausing podcast');
+    });
+});
+
+function handleProtectedRedirect(targetPage) {
+    if (localStorage.getItem("isLoggedIn") === "true") {
+        window.location.href = targetPage;
+    } else {
+        localStorage.setItem("redirectAfterLogin", targetPage);
+        window.location.href = "../../sign-login.html";
+    }
+}
