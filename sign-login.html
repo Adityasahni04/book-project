@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -370,6 +371,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -386,10 +388,13 @@
         }
 
         @keyframes bookPulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: scale(1);
                 opacity: 1;
             }
+
             50% {
                 transform: scale(1.05);
                 opacity: 0.9;
@@ -402,9 +407,12 @@
         }
 
         @keyframes bookFloat {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0px);
             }
+
             50% {
                 transform: translateY(-10px);
             }
@@ -414,24 +422,30 @@
             .container {
                 padding: 30px 20px;
             }
+
             h2 {
                 font-size: 28px;
             }
+
             input {
                 padding: 12px 15px 12px 40px;
             }
+
             .book-animation {
                 width: 60px;
                 height: 60px;
             }
+
             .redirect-book-animation {
                 width: 80px;
                 height: 80px;
             }
+
             .loading-content {
                 padding: 30px;
                 margin: 20px;
             }
+
             .redirect-content {
                 padding: 40px 30px;
                 margin: 20px;
@@ -439,11 +453,13 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Loading Overlay -->
     <div class="loading-overlay" id="loading-overlay">
         <div class="loading-content">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Animation%20-%201752072330788%5B1%5D-NAusYYDnp1hwj0OO5ZURrX3nSXHkRC.gif" alt="Loading..." class="book-animation book-pulse">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Animation%20-%201752072330788%5B1%5D-NAusYYDnp1hwj0OO5ZURrX3nSXHkRC.gif"
+                alt="Loading..." class="book-animation book-pulse">
             <div class="loading-text">Checking your session...</div>
             <div class="loading-subtext">Please wait a moment</div>
         </div>
@@ -452,7 +468,8 @@
     <!-- Redirect Overlay -->
     <div class="redirect-overlay" id="redirect-overlay">
         <div class="redirect-content">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Animation%20-%201752072330788%5B1%5D-NAusYYDnp1hwj0OO5ZURrX3nSXHkRC.gif" alt="Loading..." class="redirect-book-animation book-float">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Animation%20-%201752072330788%5B1%5D-NAusYYDnp1hwj0OO5ZURrX3nSXHkRC.gif"
+                alt="Loading..." class="redirect-book-animation book-float">
             <div class="redirect-text">Welcome to Simple Solutions!</div>
             <div class="redirect-subtext">Taking you to your book ...</div>
         </div>
@@ -652,7 +669,7 @@
             setTimeout(() => {
                 // Fade out the form container
                 formContainer.classList.add('fade-out');
-                
+
                 // Show redirect overlay after form starts fading
                 setTimeout(() => {
                     redirectOverlay.style.display = 'flex';
@@ -751,10 +768,11 @@
                 provider.addScope('profile');
                 const result = await auth.signInWithPopup(provider);
                 const user = result.user;
-
+                console.log("Firebase user object:", user);
+                const providerInfo = user.providerData && user.providerData[0];
                 const userData = {
                     name: user.displayName || "Not available",
-                    email: user.email || "Not available",
+                    email: user.email || providerInfo?.email || "Not available",
                     photoURL: user.photoURL || "",
                     phone: user.phoneNumber || "Not available",
                     loginMethod: "Google",
@@ -787,7 +805,7 @@
                         timer: 2000,
                         timerProgressBar: true
                     }).then(() => {
-                        performRedirect();
+                        // performRedirect();
                     });
                 } else {
                     throw new Error(data.message);
@@ -978,4 +996,5 @@
         });
     </script>
 </body>
+
 </html>
