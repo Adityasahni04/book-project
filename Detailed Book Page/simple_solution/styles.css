@@ -109,7 +109,6 @@ h5 {
 .nav-links {
     display: flex;
     gap: 2rem;
-    align-items: center;
 }
 
 .nav-link {
@@ -389,14 +388,14 @@ h5 {
     color: var(--text-light);
 }
 
-.section-title1 {
+.section-title {
     font-size: 2rem;
     color: var(--primary);
     margin-bottom: 20px;
     position: relative;
 }
 
-.section-title1::after {
+.section-title::after {
     content: '';
     position: absolute;
     bottom: -5px;
@@ -434,7 +433,7 @@ h5 {
     object-fit: cover;
 }
 
-.author-name1 {
+.author-name {
     font-size: 1.3rem;
     color: var(--text-dark);
     margin-bottom: 10px;
@@ -700,7 +699,7 @@ h5 {
         font-size: 2rem;
     }
 
-    .section-title1 {
+    .section-title {
         font-size: 1.5rem;
     }
 

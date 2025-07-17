@@ -112,24 +112,27 @@
 
 <body>
 
-    <nav class="navbar">
+   <nav class="navbar">
         <div class="logo">
             <div class="logo-icon">
-                <img src="Simple_Creations_logo[1].png" alt="Logo">
+                <img src="../../Simple_Creations_logo[1].png" alt="Simple Solutions Logo">
             </div>
-            <div class="logo-text">
-                <a href="../index.html">Simple Solutions</a>
-            </div>
+            <div class="logo-text">Simple Solutions</div>
         </div>
-
         <div class="nav-links">
-            <a href="../index.html" class="nav-link">Home</a>
-            <a href="../book-catalog.html" class="nav-link">Books</a>
-            <a href="../index.html#podcasts" class="nav-link">Podcasts</a>
-            <a href="../index.html#about" class="nav-link">About</a>
-            <a href="../index.html#contact" class="nav-link">Contact</a>
+            <a href="/index.html" class="nav-link">Home</a>
+            <a href="/book-catalog.html" class="nav-link">Books</a>
+            <a href="/index.html#podcasts" class="nav-link">Podcasts</a>
+            <a href="/index.html#about" class="nav-link">About</a>
+            <a href="/index.html#contact" class="nav-link">Contact</a>
+            <!-- <div class="language-toggle">
+                <select class="language-selector" id="language-selector">
+                    <option value="en">English</option>
+                    <option value="hi">हिन्दी</option>
+                </select>
+            </div> -->
         </div>
-        <div class="menu-toggle">
+        <div class="menu-toggle" id="menu-toggle">
             <span></span>
             <span></span>
             <span></span>
@@ -153,6 +156,33 @@
         localStorage.setItem("redirectAfterLogin", window.location.pathname);
         window.location.href = "../sign-login.html";
     }
+     document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            
+            // Animate hamburger menu
+            const spans = menuToggle.querySelectorAll('span');
+            spans.forEach(span => span.classList.toggle('active'));
+        });
+    }
+
+    // Navbar scroll effect
+    const navbar = document.querySelector('.navbar');
+    
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+  });
+
 
 </script>
 
