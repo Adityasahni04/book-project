@@ -4,6 +4,14 @@
 <head>
     <meta charset="UTF-8" />
     <title>Read at Simple Solutions</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YSR3P6MXSB"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-YSR3P6MXSB');
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
         :root {
@@ -580,7 +588,8 @@
                     <p>Language: English</p>
                     <p>Category: Novel</p>
                     <p>Rating: 4.7</p>
-                    <a href="#" class="details-button">More Details</a>
+                    <a href="#" class="details-button" onclick="handleProtectedRedirect('/Book-load/7-step.html')">More
+                        Details</a>
                 </div>
             </div>
             <div class="poster">
@@ -600,7 +609,9 @@
                     <h3>Simple Solutions for Complicated Problems</h3>
                     <p>Language: English</p>
                     <p>Rating: 4.8</p>
-                    <a href="#" class="details-button">More Details</a>
+                    <a href="#" class="details-button"
+                        onclick="handleProtectedRedirect('/Book-load/simple-sol.html')">More
+                        Details</a>
                 </div>
             </div>
             <div class="poster">
@@ -736,6 +747,15 @@
                 navLinks.classList.toggle('active');
                 spans.forEach(span => span.classList.toggle('active'));
             });
+        }
+
+        function handleProtectedRedirect(targetPage) {
+            if (localStorage.getItem("isLoggedIn") === "true") {
+                window.location.href = targetPage;
+            } else {
+                localStorage.setItem("redirectAfterLogin", targetPage);
+                window.location.href = "sign-login.html";
+            }
         }
     </script>
 
