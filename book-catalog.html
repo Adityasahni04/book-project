@@ -556,6 +556,65 @@
                 z-index: 1;
             }
         }
+
+        .redirect-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 248, 237, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .redirect-overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .redirect-content {
+            text-align: center;
+            color: #5d4037;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .redirect-book-animation {
+            width: 120px;
+            margin-bottom: 1rem;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        .redirect-text {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .redirect-subtext {
+            font-size: 1rem;
+            color: #8d6e63;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 
@@ -599,7 +658,8 @@
                     <h3>Mastering The Mind-English</h3>
                     <p>Language: English</p>
                     <p>Rating: 4.5</p>
-                    <a href="Detailed Book Page/mastering_mid_english/detailed_mastering_mind_eng.html" class="details-button">More Details</a>
+                    <a href="Detailed Book Page/mastering_mid_english/detailed_mastering_mind_eng.html"
+                        class="details-button">More Details</a>
                 </div>
             </div>
             <div class="poster">
@@ -661,6 +721,16 @@
         <div class="grid-container" id="gridContainer">
             <!-- Grid items will be duplicated from arc container -->
         </div>
+        <!-- Redirect Overlay -->
+        <div class="redirect-overlay" id="redirect-overlay">
+            <div class="redirect-content">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Animation%20-%201752072330788%5B1%5D-NAusYYDnp1hwj0OO5ZURrX3nSXHkRC.gif"
+                    alt="Loading..." class="redirect-book-animation book-float">
+                <div class="redirect-text">Welcome to Simple Solutions!</div>
+                <div class="redirect-subtext">Taking you to your book ...</div>
+            </div>
+        </div>
+
     </main>
 
     <button class="transform-btn" id="transformBtn">Explore All Books</button>
@@ -735,6 +805,67 @@
                 gridItems.forEach(item => gridContainer.appendChild(item));
             });
         });
+
+        const loadingOverlay = document.getElementById('redirect-overlay');
+
+    // Show loading screen
+    function showLoading() {
+        loadingOverlay.style.display = 'flex';
+        setTimeout(() => {
+            loadingOverlay.classList.add('show');
+        }, 10);
+    }
+
+    // Hide loading screen
+    function hideLoading() {
+        loadingOverlay.classList.remove('show');
+        setTimeout(() => {
+            loadingOverlay.style.display = 'none';
+        }, 300);
+    }
+
+    // Wait for all images to load
+    function waitForImagesToLoad(callback) {
+        const images = document.images;
+        let loaded = 0;
+        const total = images.length;
+
+        if (total === 0) {
+            callback();
+            return;
+        }
+
+        for (let img of images) {
+            if (img.complete) {
+                loaded++;
+            } else {
+                img.addEventListener('load', () => {
+                    loaded++;
+                    if (loaded === total) callback();
+                });
+                img.addEventListener('error', () => {
+                    loaded++;
+                    if (loaded === total) callback();
+                });
+            }
+        }
+
+        if (loaded === total) {
+            callback();
+        }
+    }
+
+    // Show loader when page starts, and hide after all images are loaded
+    window.addEventListener('DOMContentLoaded', () => {
+        showLoading();
+
+        waitForImagesToLoad(() => {
+            // 👇 Simulate delay for testing (remove in production)
+            setTimeout(() => {
+                hideLoading();
+            }, 2000); // 2 seconds delay
+        });
+    });
 
         // Menu toggle logic
         const toggle = document.querySelector('.menu-toggle');
