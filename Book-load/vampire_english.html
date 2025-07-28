@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Your Book</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+
+            background: linear-gradient(to bottom right, #f7f0e8, #f2e6d9);
+            color: #4a3f35;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Book title */
+        h1 {
+            font-size: 3em;
+            margin-bottom: 30px;
+            font-weight: 700;
+            color: #5a4634;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        /* Book wrapper */
+        .book-wrapper {
+            background: #fcfaf8;
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            width: 90%;
+            max-width: 850px;
+            padding: 30px;
+            position: relative;
+        }
+
+        .book-wrapper::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 15px;
+            width: 8px;
+            background: linear-gradient(to bottom, #d9c7b0, #c2b39b);
+            border-radius: 4px;
+            box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
+        }
+
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 8px;
+            background-color: #ffffff;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+            transition: height 0.3s ease;
+        }
+
+        /* Responsive book title and iframe */
+        @media (max-width: 1024px) {
+            h1 {
+                font-size: 2.5em;
+            }
+
+            iframe {
+                height: 550px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2em;
+            }
+
+            .book-wrapper {
+                padding: 20px;
+            }
+
+            iframe {
+                height: 1550px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .book-wrapper {
+                padding: 15px;
+            }
+
+            iframe {
+                height: 750px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <div class="logo-icon">
+                <img src="../../Simple_Creations_logo[1].png" alt="Simple Solutions Logo">
+            </div>
+            <div class="logo-text">Mastering the Mind</div>
+        </div>
+        <div class="nav-links">
+            <a href="/index.html" class="nav-link">Home</a>
+            <a href="/book-catalog.html" class="nav-link">Books</a>
+            <a href="/index.html#podcasts" class="nav-link">Podcasts</a>
+            <a href="/index.html#about" class="nav-link">About</a>
+            <a href="/index.html#contact" class="nav-link">Contact</a>
+            <!-- <div class="language-toggle">
+                <select class="language-selector" id="language-selector">
+                    <option value="en">English</option>
+                    <option value="hi">हिन्दी</option>
+                </select>
+            </div> -->
+        </div>
+        <div class="menu-toggle" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <h1>Your Book</h1>
+
+    <div class="book-wrapper"
+        style="width: 100%; max-width: 800px; height: 600px; margin: auto; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        <iframe src="https://drive.google.com/file/d/1sQwdVBs1Fr_PmJlnR8x7T3hz5iJCnnO2/preview" width="100%"
+            height="100%" style="border: none;" allow="autoplay">
+        </iframe>
+    </div>
+
+
+</body>
+<script>
+    const accessToken = document.cookie.includes('accessToken');
+    if (!accessToken) {
+        localStorage.setItem("redirectAfterLogin", window.location.pathname);
+        window.location.href = "../sign-login.html";
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', function () {
+                navLinks.classList.toggle('active');
+
+                // Animate hamburger menu
+                const spans = menuToggle.querySelectorAll('span');
+                spans.forEach(span => span.classList.toggle('active'));
+            });
+        }
+
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    });
+
+
+</script>
+
+</html>

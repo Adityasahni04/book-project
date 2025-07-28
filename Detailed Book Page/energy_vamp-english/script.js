@@ -64,26 +64,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Share button
-    const shareBtn = document.getElementById('shareBtn');
-    
-    if (shareBtn) {
-        shareBtn.addEventListener('click', function() {
-            if (navigator.share) {
-                navigator.share({
-                    title: 'The Midnight Library - Matt Haig',
-                    text: 'Check out this amazing book!',
-                    url: window.location.href
-                });
-            } else {
-                // Fallback for browsers that don't support Web Share API
-                const url = window.location.href;
-                navigator.clipboard.writeText(url).then(function() {
-                    alert('Link copied to clipboard!');
-                });
-            }
-        });
-    }
 
     // Load more reviews
     const loadMoreBtn = document.getElementById('loadMoreBtn');
@@ -98,17 +78,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.textContent = 'No more reviews';
                 this.classList.add('disabled-btn');
             }, 1500);
-        });
-    }
-
-    // Language selector
-    const languageSelector = document.getElementById('language-selector');
-    
-    if (languageSelector) {
-        languageSelector.addEventListener('change', function() {
-            const selectedLang = this.value;
-            // Here you would implement language switching logic
-            console.log('Language changed to:', selectedLang);
         });
     }
 
@@ -149,3 +118,12 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
 });
+
+function handleProtectedRedirect(targetPage) {
+    if (localStorage.getItem("isLoggedIn") === "true") {
+        window.location.href = targetPage;
+    } else {
+        localStorage.setItem("redirectAfterLogin", targetPage);
+        window.location.href = "../../sign-login.html";
+    }
+}

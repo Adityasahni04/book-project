@@ -641,11 +641,10 @@
         <div class="arc-container" id="arcContainer">
             <div class="poster">
                 <img src="catalog_images/catalog_7-step_english.png" alt="Book 1">
-                <div class="price">FREE</div>
+
                 <div class="card-info">
                     <h3>The 7 Step Guide to Simplifying your Life</h3>
                     <p>Language: English</p>
-                    <p>Category: Novel</p>
                     <p>Rating: 4.7</p>
                     <a href="Detailed Book Page/7-step_english/detailed_7_step.html" class="details-button">More
                         Details</a>
@@ -653,7 +652,7 @@
             </div>
             <div class="poster">
                 <img src="catalog_images/catalog_mastering_mind_english.jpg" alt="Book 2">
-                <div class="price">FREE</div>
+
                 <div class="card-info">
                     <h3>Mastering The Mind-English</h3>
                     <p>Language: English</p>
@@ -664,7 +663,6 @@
             </div>
             <div class="poster">
                 <img src="catalog_images/catalog_simple_solutions.jpg" alt="Book 3">
-                <div class="price">FREE</div>
                 <div class="card-info">
                     <h3>Simple Solutions for Complicated Problems</h3>
                     <p>Language: English</p>
@@ -675,32 +673,29 @@
             </div>
             <div class="poster">
                 <img src="catalog_images/catalog_mastering_mind_hindi.jpg" alt="Book 4">
-                <div class="price">FREE</div>
                 <div class="card-info">
                     <h3>Mastering the Mind-Hindi</h3>
                     <p>Language: Hindi</p>
                     <p>Rating: 4.5</p>
-                    <a href="#" class="details-button">More Details</a>
+                    <a href="Detailed Book Page/mastering_mid_hindi/detailed_mastering_mind_hindi.html" class="details-button">More Details</a>
                 </div>
             </div>
             <div class="poster hidden-mobile">
                 <img src="catalog_images/catalog_energy_vamp-english.jpeg" alt="Book 5">
-                <div class="price">FREE</div>
                 <div class="card-info">
                     <h3>Energy Vampires and Occult Warfare-English</h3>
                     <p>Language: English</p>
                     <p>Rating: 4.6</p>
-                    <a href="#" class="details-button">More Details</a>
+                    <a href="Detailed Book Page/energy_vamp-english/detailed_energy_vamp-english.html" class="details-button">More Details</a>
                 </div>
             </div>
             <div class="poster grid-only">
                 <img src="catalog_images/catalog_energy_vamp-hindi.jpeg" alt="Book 6">
-                <div class="price">FREE</div>
                 <div class="card-info">
                     <h3>Energy Vampires and Occult Warfare-Hindi </h3>
                     <p>Language: Hindi</p>
                     <p>Rating: 4.6</p>
-                    <a href="#" class="details-button">More Details</a>
+                    <a href="Detailed Book Page/energy_vamp-hindi/detailed_energy_vamp-hindi.html" class="details-button">More Details</a>
                 </div>
             </div>
         </div>
@@ -808,64 +803,64 @@
 
         const loadingOverlay = document.getElementById('redirect-overlay');
 
-    // Show loading screen
-    function showLoading() {
-        loadingOverlay.style.display = 'flex';
-        setTimeout(() => {
-            loadingOverlay.classList.add('show');
-        }, 10);
-    }
-
-    // Hide loading screen
-    function hideLoading() {
-        loadingOverlay.classList.remove('show');
-        setTimeout(() => {
-            loadingOverlay.style.display = 'none';
-        }, 300);
-    }
-
-    // Wait for all images to load
-    function waitForImagesToLoad(callback) {
-        const images = document.images;
-        let loaded = 0;
-        const total = images.length;
-
-        if (total === 0) {
-            callback();
-            return;
+        // Show loading screen
+        function showLoading() {
+            loadingOverlay.style.display = 'flex';
+            setTimeout(() => {
+                loadingOverlay.classList.add('show');
+            }, 10);
         }
 
-        for (let img of images) {
-            if (img.complete) {
-                loaded++;
-            } else {
-                img.addEventListener('load', () => {
+        // Hide loading screen
+        function hideLoading() {
+            loadingOverlay.classList.remove('show');
+            setTimeout(() => {
+                loadingOverlay.style.display = 'none';
+            }, 300);
+        }
+
+        // Wait for all images to load
+        function waitForImagesToLoad(callback) {
+            const images = document.images;
+            let loaded = 0;
+            const total = images.length;
+
+            if (total === 0) {
+                callback();
+                return;
+            }
+
+            for (let img of images) {
+                if (img.complete) {
                     loaded++;
-                    if (loaded === total) callback();
-                });
-                img.addEventListener('error', () => {
-                    loaded++;
-                    if (loaded === total) callback();
-                });
+                } else {
+                    img.addEventListener('load', () => {
+                        loaded++;
+                        if (loaded === total) callback();
+                    });
+                    img.addEventListener('error', () => {
+                        loaded++;
+                        if (loaded === total) callback();
+                    });
+                }
+            }
+
+            if (loaded === total) {
+                callback();
             }
         }
 
-        if (loaded === total) {
-            callback();
-        }
-    }
+        // Show loader when page starts, and hide after all images are loaded
+        window.addEventListener('DOMContentLoaded', () => {
+            showLoading();
 
-    // Show loader when page starts, and hide after all images are loaded
-    window.addEventListener('DOMContentLoaded', () => {
-        showLoading();
-
-        waitForImagesToLoad(() => {
-            // 👇 Simulate delay for testing (remove in production)
-            setTimeout(() => {
-                hideLoading();
-            }, 2000); // 2 seconds delay
+            waitForImagesToLoad(() => {
+                // 👇 Simulate delay for testing (remove in production)
+                setTimeout(() => {
+                    hideLoading();
+                }, 2000); // 2 seconds delay
+            });
         });
-    });
 
         // Menu toggle logic
         const toggle = document.querySelector('.menu-toggle');
